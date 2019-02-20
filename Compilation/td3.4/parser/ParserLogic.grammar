@@ -1,0 +1,20 @@
+%class "ParserLogic";
+
+%terminals AND, OR, NEGATION, TRUE, FALSE, LPARENTH, RPARENTH, VARIABLE;
+
+%goal Expr;
+
+Expr = Expr AND Term
+    | Term
+    ;
+
+Term = Term OR Factor
+    | Factor
+    ;
+
+Factor = TRUE
+    | FALSE
+    | VARIABLE
+    | LPARENTH Expr RPARENTH
+    | NEGATION LPARENTH Expr RPARENTH
+    ;

@@ -1,0 +1,18 @@
+%class "ParserAb";
+
+%terminals A, B, NEWLINE;
+
+%goal S;
+
+
+S = S L
+	| L 
+	;
+
+L = AB NEWLINE.nl {: System.out.println("ligne (jflex) = " + nl.value);return nl; :}
+	;
+
+
+AB = A AB B
+	|
+	;

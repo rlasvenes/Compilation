@@ -1,0 +1,32 @@
+import beaver.Symbol;
+import beaver.Scanner;
+
+%%
+
+%{
+    // attributs de la classe ici
+%}
+
+
+%class ScannerLogicProp
+%extends Scanner
+%function nextToken
+%type Symbol
+%yylexthrow Scanner.Exception
+%eofval{
+
+%eofval}
+%unicode
+
+%%
+
+	\u2228         	{ return new Symbol(Terminals.OR); }
+	\u2227         	{ return new Symbol(Terminals.AND); }
+	\u00AC         	{ return new Symbol(Terminals.NEGATION); }
+    "1"             { System.out.println("TRUE");return new Symbol(Terminals.TRUE); }
+    "0"             { System.out.println("FALSE");return new Symbol(Terminals.FALSE); }
+    "("             { System.out.println("LPARENTH");return new Symbol(Terminals.LPARENTH); }
+    ")"             { System.out.println("RPARENTH");return new Symbol(Terminals.RPARENTH); }
+    [a-zA-Z_]+      { System.out.println("VARIABLE");return new Symbol(Terminals.VARIABLE); }
+    \n              { System.out.println("NEWLINE");return new Symbol(Terminals.NEWLINE); }
+	[^]         	{ }
