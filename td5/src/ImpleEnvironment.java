@@ -8,12 +8,11 @@ public class ImpleEnvironment implements Environment {
 	@Override
 	public void addType(String name, Type t) {
 		identifiers.put(name, t);
-		
+		System.out.println("Ajout du type " + t.toString());
 	}
 
 	@Override
 	public Type getType(String name) {
-	
 		return identifiers.get(name);
 	}
 

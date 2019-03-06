@@ -1,6 +1,5 @@
 %class "ParserExp";
 
-
 %embed {:
 	static class Events extends beaver.Parser.Events
 	{
@@ -12,17 +11,18 @@
 				Terminals.NAMES[token.getId()]);
 		}
 	}
+
+	Environment env = new ImpleEnvironment();
 :};
 
 %init {:
 	report = new Events();
-	Environment env = new ImpleEnvironment();
 :};
 
 %terminals IDENT, CONST_INT, CONST_STRING, TYPE_INT, TYPE_STRING, LIST, MAPSTO, LPAR, RPAR, LBRACKET, RBRACKET, PLUS, MINUS, COMMA, COLON, SEMICOLON;
 
-%typeof type "Type";
-%typeof IDENT "String";
+%typeof type = "Type";
+%typeof IDENT = "String";
 
 %goal expression_typee;
 
@@ -35,7 +35,7 @@ declaration_list=
                 | declaration_list declaration
                 ;
 
-declaration= IDENT.id COLON type.t SEMICOLON {: env.addType(id, t);return t; :}
+declaration= IDENT.id COLON type.t SEMICOLON {: env.addType(id, t);return new Symbol(0); :}
            ;
 
 type= type_simple
@@ -43,8 +43,8 @@ type= type_simple
     | LPAR type_list RPAR MAPSTO type
     ;
 
-type_simple= TYPE_INT {: return new SimpleType(SimpleType.INT); :}
-           | TYPE_STRING {: return new SimpleType(SimpleType.STRING); :}
+type_simple= TYPE_INT {: return new SimpleType(SimpleType.Kinds.INT); :}
+           | TYPE_STRING {: return new SimpleType(SimpleType.Kinds.STRING); :}
            ;
 
 type_list=
@@ -52,7 +52,7 @@ type_list=
          | type_list COMMA type
          ;
 
-expression= IDENT
+expression= IDENT.id {: env.addType(id, env.getType(id)); return new Symbol(0); :}
           | CONST_INT
           | CONST_STRING
           | expression PLUS expression

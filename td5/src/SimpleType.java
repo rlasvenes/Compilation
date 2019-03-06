@@ -2,7 +2,7 @@ import beaver.Symbol;
 
 public class SimpleType extends Symbol implements Type {
 
-	private enum Kinds {
+	public enum Kinds {
 		INT, FLOAT, STRING
 	};
 	
@@ -22,5 +22,11 @@ public class SimpleType extends Symbol implements Type {
 		
 		return false;
 	}
+
+	@Override
+	public String toString() {
+		return "SimpleType [kindOf=" + kindOf + "]";
+	}
+	
 	
 }
