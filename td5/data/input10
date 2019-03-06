@@ -1,0 +1,4 @@
+fun: (int) -> (List(string)) -> string;
+i: int;
+fun(2)(["un", "deux", "trois"])
+12

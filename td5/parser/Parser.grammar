@@ -1,5 +1,6 @@
 %class "ParserExp";
 
+
 %embed {:
 	static class Events extends beaver.Parser.Events
 	{
@@ -15,9 +16,13 @@
 
 %init {:
 	report = new Events();
+	Environment env = new ImpleEnvironment();
 :};
 
 %terminals IDENT, CONST_INT, CONST_STRING, TYPE_INT, TYPE_STRING, LIST, MAPSTO, LPAR, RPAR, LBRACKET, RBRACKET, PLUS, MINUS, COMMA, COLON, SEMICOLON;
+
+%typeof type "Type";
+%typeof IDENT "String";
 
 %goal expression_typee;
 
@@ -30,7 +35,7 @@ declaration_list=
                 | declaration_list declaration
                 ;
 
-declaration= IDENT COLON type SEMICOLON
+declaration= IDENT.id COLON type.t SEMICOLON {: env.addType(id, t);return t; :}
            ;
 
 type= type_simple
@@ -38,8 +43,8 @@ type= type_simple
     | LPAR type_list RPAR MAPSTO type
     ;
 
-type_simple= TYPE_INT
-           | TYPE_STRING
+type_simple= TYPE_INT {: return new SimpleType(SimpleType.INT); :}
+           | TYPE_STRING {: return new SimpleType(SimpleType.STRING); :}
            ;
 
 type_list=

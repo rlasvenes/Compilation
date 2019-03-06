@@ -1,4 +1,4 @@
-<project name="lambda" default="help">
+<project name="td5" default="help">
 
 	<target name="jflextask" unless="jflex.available" description="creates JFlex Ant task">
 		<taskdef name="jflex" classname="jflex.anttask.JFlexTask" classpath="lib/jflex-full-1.7.0.jar" />
@@ -58,6 +58,11 @@
 			<arg value="data/input04" />
 			<arg value="data/input05" />
 			<arg value="data/input06" />
+			<arg value="data/input07" />
+			<arg value="data/input08" />
+			<arg value="data/input09" />
+			<arg value="data/input10" />
+			<arg value="data/input11" />
 		</java>
 
 	</target>
@@ -71,4 +76,3 @@
 	</target>
 
 </project>
-
