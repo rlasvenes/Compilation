@@ -1,0 +1,7 @@
+text : 2
+ +
+reduce NUMBER
+text : 2
+ *
+reduce NUMBER
+text : 3

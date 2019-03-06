@@ -1,0 +1,23 @@
+%class "ParserExpr";
+
+%terminals LPARENTH, RPARENTH, PLUS, MULT, MINUS, DIVIDE, TOKEN_NUMBER;
+
+%left RPARENTH;
+%left MULT, DIVIDE;
+%left PLUS, MINUS;
+
+%typeof ExprArithm = "MySymbol";
+%typeof Expr = "MySymbol";
+
+%goal Expr;
+
+Expr = ExprArithm.e {: System.out.println("resultat = " + e.value);return e; :}
+    ;
+
+ExprArithm  = ExprArithm.a  MULT     ExprArithm.b   {: System.out.println("reduce MULT");   return new MySymbol(a.value * b.value); :}
+            | ExprArithm.a  DIVIDE   ExprArithm.b   {: System.out.println("reduce DIVIDE"); return new MySymbol(a.value / b.value); :}
+            | ExprArithm.a  PLUS     ExprArithm.b   {: System.out.println("reduce PLUS");   return new MySymbol(a.value + b.value); :}
+            | ExprArithm.a  MINUS    ExprArithm.b   {: System.out.println("reduce MINUS");  return new MySymbol(a.value - b.value); :}
+            | TOKEN_NUMBER.n                        {: System.out.println("reduce NUMBER"); return n; :}
+            | LPARENTH ExprArithm.e RPARENTH        {: System.out.println("reduce EXPR");   return e; :}
+            ;
