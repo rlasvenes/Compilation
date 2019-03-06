@@ -22,7 +22,7 @@ public class ParserExpr extends Parser {
 				public Symbol reduce(Symbol[] _symbols, int offset) {
 					final Symbol _symbol_e = _symbols[offset + 1];
 					final MySymbol e = (MySymbol) _symbol_e.value;
-					 System.out.println("resultat = " + e.value);return e;
+					 System.out.println("resultat = " + e.value);return new Symbol(0);
 				}
 			},
 			new Action() {	// [1] ExprArithm = ExprArithm.a MULT ExprArithm.b

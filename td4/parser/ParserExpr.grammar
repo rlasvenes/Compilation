@@ -2,7 +2,6 @@
 
 %terminals LPARENTH, RPARENTH, PLUS, MULT, MINUS, DIVIDE, TOKEN_NUMBER;
 
-%left RPARENTH;
 %left MULT, DIVIDE;
 %left PLUS, MINUS;
 
@@ -11,7 +10,7 @@
 
 %goal Expr;
 
-Expr = ExprArithm.e {: System.out.println("resultat = " + e.value);return e; :}
+Expr = ExprArithm.e {: System.out.println("resultat = " + e.value);return new Symbol(0); :}
     ;
 
 ExprArithm  = ExprArithm.a  MULT     ExprArithm.b   {: System.out.println("reduce MULT");   return new MySymbol(a.value * b.value); :}
