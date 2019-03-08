@@ -5,10 +5,10 @@
 %import "Declarations.*";
 %class "ParserExpr";
 
-%embed {: 
+%embed {:
 
 static public class MyEvents extends beaver.Parser.Events {
-	
+
 	public void syntaxError(Symbol token) {
 		System.err.print("Erreur de syntaxe ligne ");
 		System.err.println(Symbol.getLine(token.getStart()));
@@ -16,6 +16,8 @@ static public class MyEvents extends beaver.Parser.Events {
 		System.err.println(Terminals.NAMES[token.getId()]);
 	}
 };
+
+EnvironmentInt env = new Environment();
 
 :} ;
 
@@ -40,11 +42,11 @@ static public class MyEvents extends beaver.Parser.Events {
 
 %goal Program;
 
-Program = 
+Program =
 	Declarations.d SEMI Expression.e {: return new Seq(d, e); :}
 	;
 
-Declarations = 
+Declarations =
 	Declarations.d1 SEMI Declaration.d2 {: return new Seq(d1, d2); :}
 	| Declaration.d {: return d; :}
 	;
@@ -52,8 +54,8 @@ Declarations =
 Declaration =
 	ID.id EQ Expression.e {: return new Aff(e, id); :}
 	;
-	
-Expression = 
+
+Expression =
 	Expression.e1 PLUS Expression.e2  {: return new Plus(e1, e2); :}
 	| Expression.e1 MINUS Expression.e2 {: return new Minus(e1, e2); :}
 	| Expression.e1 TIMES Expression.e2 {: return new Multiply(e1, e2); :}
@@ -68,5 +70,3 @@ Expression =
 	| PI.p {: return new FloatExp(p); :}
 	| E.e {: return new FloatExp(e); :}
 	;
-
-
