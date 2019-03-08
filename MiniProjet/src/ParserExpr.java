@@ -1,5 +1,9 @@
+import Functions.*;
+import Operator.*;
 import abstractTree.*;
 import beaver.*;
+import Declarations.*;
+import Expressions.*;
 import java.util.ArrayList;
 
 /**
@@ -92,7 +96,7 @@ static public class MyEvents extends beaver.Parser.Events {
 					final AbstTree e1 = (AbstTree) _symbol_e1.value;
 					final Symbol _symbol_e2 = _symbols[offset + 3];
 					final AbstTree e2 = (AbstTree) _symbol_e2.value;
-					 return new Times(e1, e2);
+					 return new Multiply(e1, e2);
 				}
 			},
 			new Action() {	// [7] Expression = Expression.e1 DIV Expression.e2

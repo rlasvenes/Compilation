@@ -2,7 +2,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class ImpleEnvironment implements Environment {
-	
+
 	private Map<String, Type> identifiers;
 
 	@Override
