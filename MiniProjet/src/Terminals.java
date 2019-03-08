@@ -1,6 +1,6 @@
 /**
  * This class lists terminals used by the
- * grammar specified in "parserExpr.grammar".
+ * grammar specified in "ParserExpr.grammar".
  */
 public class Terminals {
 	static public final short EOF = 0;

@@ -1,2 +1,4 @@
+f: (int) -> (string) -> string;
 x: int;
 32
+f(12)("toto")

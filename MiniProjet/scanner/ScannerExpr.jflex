@@ -30,16 +30,16 @@ BFunction = min|max
 "/" 	        { System.out.println("*** " + yytext()); return new Symbol(Terminals.DIV, yyline, yycolumn); }
 "(" 	        { System.out.println("*** " + yytext()); return new Symbol(Terminals.LPAR, yyline, yycolumn); }
 ")" 	        { System.out.println("*** " + yytext()); return new Symbol(Terminals.RPAR, yyline, yycolumn); }
-{UFunction}	{ System.out.println("*** " + yytext()); return new Symbol(Terminals.UFCT, yyline, yycolumn, yytext()); }
-{BFunction}	{ System.out.println("*** " + yytext()); return new Symbol(Terminals.BFCT, yyline, yycolumn, yytext()); }
-e			{ System.out.println("*** " + yytext()); return new Symbol(Terminals.E, yyline, yycolumn, java.lang.Math.E); }
-pi			{ System.out.println("*** " + yytext()); return new Symbol(Terminals.PI, yyline, yycolumn, java.lang.Math.PI); }
+{UFunction}		{ System.out.println("*** " + yytext()); return new Symbol(Terminals.UFCT, yyline, yycolumn, yytext()); }
+{BFunction}		{ System.out.println("*** " + yytext()); return new Symbol(Terminals.BFCT, yyline, yycolumn, yytext()); }
+e				{ System.out.println("*** " + yytext()); return new Symbol(Terminals.E, yyline, yycolumn, java.lang.Math.E); }
+pi				{ System.out.println("*** " + yytext()); return new Symbol(Terminals.PI, yyline, yycolumn, java.lang.Math.PI); }
 "=" 	        { System.out.println("*** " + yytext()); return new Symbol(Terminals.EQ, yyline, yycolumn); }
 "," 	        { System.out.println("*** " + yytext()); return new Symbol(Terminals.COMMA, yyline, yycolumn); }
 ";" 	        { System.out.println("*** " + yytext()); return new Symbol(Terminals.SEMI, yyline, yycolumn); }
 
-{Integer}	{ System.out.println("*** " + yytext()); return new Symbol(Terminals.INTEGER, yyline, yycolumn, new Integer(yytext())); }
-{Float}		{ System.out.println("*** " + yytext()); return new Symbol(Terminals.FLOAT, yyline, yycolumn, new Double(yytext())); }
+{Integer}		{ System.out.println("*** " + yytext()); return new Symbol(Terminals.INTEGER, yyline, yycolumn, new Integer(yytext())); }
+{Float}			{ System.out.println("*** " + yytext()); return new Symbol(Terminals.FLOAT, yyline, yycolumn, new Double(yytext())); }
 {Identifier}	{ System.out.println("*** " + yytext()); return new Symbol(Terminals.ID, yyline, yycolumn, yytext()); }
 
-[^]|\n		{ }
+[^]|\n			{ }

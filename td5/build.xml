@@ -53,7 +53,7 @@
 
 		<java classname="Main" classpath="bin" classpathref="beaverclasspath" output="data/output">
 			<arg value="data/input01" />
-			<arg value="data/input02" />
+			<!-- <arg value="data/input02" />
 			<arg value="data/input03" />
 			<arg value="data/input04" />
 			<arg value="data/input05" />
@@ -62,7 +62,7 @@
 			<arg value="data/input08" />
 			<arg value="data/input09" />
 			<arg value="data/input10" />
-			<arg value="data/input11" />
+			<arg value="data/input11" /> -->
 		</java>
 
 	</target>

@@ -1,36 +1,4 @@
-Ajout du type SimpleType [kindOf=INT]
-Le fichier data/input01 est correct
-Ajout du type SimpleType [kindOf=INT]
-Ajout du type SimpleType [kindOf=INT]
-Ajout du type SimpleType [kindOf=INT]
-Ajout du type SimpleType [kindOf=INT]
-Le fichier data/input02 est correct
-Ajout du type SimpleType [kindOf=INT]
-Ajout du type SimpleType [kindOf=INT]
-Le fichier data/input03 est correct
-Ajout du type SimpleType [kindOf=STRING]
-Ajout du type SimpleType [kindOf=INT]
-Ajout du type SimpleType [kindOf=STRING]
-Ajout du type SimpleType [kindOf=INT]
-Le fichier data/input04 est correct
-Ajout du type SimpleType [kindOf=INT]
-Ajout du type SimpleType [kindOf=INT]
-Le fichier data/input05 est correct
-Erreur de syntaxe en ligne 1, colonne 20. Token inattendu: SEMICOLON
-Erreur de styntaxe: data/input06:Cannot recover from the syntax error
-Erreur de syntaxe en ligne 2, colonne 1. Token inattendu: IDENT
-Erreur de styntaxe: data/input07:Cannot recover from the syntax error
-Erreur de syntaxe en ligne 1, colonne 12. Token inattendu: COMMA
-Erreur de styntaxe: data/input08:Cannot recover from the syntax error
-Ajout du type SimpleType [kindOf=STRING]
-Ajout du type SimpleType [kindOf=STRING]
-Le fichier data/input09 est correct
-Ajout du type SimpleType [kindOf=STRING]
-Ajout du type SimpleType [kindOf=INT]
-Ajout du type SimpleType [kindOf=STRING]
-Erreur de syntaxe en ligne 4, colonne 1. Token inattendu: CONST_INT
-4,1-4,2: Recovered: removed unexpected token "12"
-Le fichier data/input10 est correct
-Ajout du type SimpleType [kindOf=STRING]
-Ajout du type SimpleType [kindOf=INT]
-Le fichier data/input11 est correct
+Ajout du type STRING
+Ajout du type INT
+Erreur de syntaxe en ligne 4, colonne 1. Token inattendu: IDENT
+Erreur de styntaxe: data/input01:Cannot recover from the syntax error
