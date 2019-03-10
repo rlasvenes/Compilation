@@ -25,20 +25,20 @@
     │   ├── AbstTree.java
     │   ├── EnvironmentInt.java
     │   └── Environment.java
-    ├── Constants
-    │   └── Functions.java
-    ├── Declarations
+    ├── constants
+    │   └── functions.java
+    ├── declarations
     │   ├── Affectation.java
     │   └── DeclarationList.java
-    ├── Expressions
+    ├── expressions
     │   ├── TypeFloatExpr.java
     │   ├── TypeIdenficatorExpr.java
     │   └── TypeIntegerExpr.java
-    ├── Functions
+    ├── functions
     │   ├── BinaryFunction.java
     │   └── UnaryFunction.java
     ├── Main.java
-    └── Operator
+    └── operator
         ├── DivisionSymbol.java
         ├── MinusSymbol.java
         ├── MultiplySymbol.java

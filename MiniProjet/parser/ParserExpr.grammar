@@ -1,8 +1,8 @@
 %import "abstractTree.*";
-%import "Operator.*";
-%import "Expressions.*";
-%import "Functions.*";
-%import "Declarations.*";
+%import "operator.*";
+%import "expressions.*";
+%import "functions.*";
+%import "declarations.*";
 %class "ParserExpr";
 
 %embed {:

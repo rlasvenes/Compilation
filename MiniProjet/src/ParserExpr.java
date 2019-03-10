@@ -1,9 +1,9 @@
-import Functions.*;
-import Operator.*;
+import operator.*;
+import declarations.*;
 import abstractTree.*;
 import beaver.*;
-import Declarations.*;
-import Expressions.*;
+import functions.*;
+import expressions.*;
 import java.util.ArrayList;
 
 /**

@@ -1,4 +1,4 @@
-package Functions;
+package functions;
 
 import abstractTree.AbstTree;
 import abstractTree.EnvironmentInt;

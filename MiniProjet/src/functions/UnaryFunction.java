@@ -1,6 +1,6 @@
-package Functions;
+package functions;
 
-import Constants.Functions;
+import constants.Functions;
 import abstractTree.AbstTree;
 import abstractTree.EnvironmentInt;
 

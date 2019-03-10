@@ -2,12 +2,22 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="725e2448-5932-41a6-ba4b-474cfbde4339" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/MiniProjet/data/input" beforeDir="false" afterPath="$PROJECT_DIR$/MiniProjet/data/input" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/MiniProjet/src/Functions/UnaryFunction.java" beforeDir="false" afterPath="$PROJECT_DIR$/MiniProjet/src/Functions/UnaryFunction.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/MiniProjet/src/Operator/DivisionSymbol.java" beforeDir="false" afterPath="$PROJECT_DIR$/MiniProjet/src/Operator/DivisionSymbol.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/MiniProjet/src/Operator/MinusSymbol.java" beforeDir="false" afterPath="$PROJECT_DIR$/MiniProjet/src/Operator/MinusSymbol.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MiniProjet/README" beforeDir="false" afterPath="$PROJECT_DIR$/MiniProjet/README" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MiniProjet/parser/ParserExpr.grammar" beforeDir="false" afterPath="$PROJECT_DIR$/MiniProjet/parser/ParserExpr.grammar" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MiniProjet/src/Constants/Functions.java" beforeDir="false" afterPath="$PROJECT_DIR$/MiniProjet/src/constants/Functions.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MiniProjet/src/Declarations/Affectation.java" beforeDir="false" afterPath="$PROJECT_DIR$/MiniProjet/src/declarations/Affectation.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MiniProjet/src/Declarations/DeclarationList.java" beforeDir="false" afterPath="$PROJECT_DIR$/MiniProjet/src/declarations/DeclarationList.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MiniProjet/src/Expressions/TypeFloatExpr.java" beforeDir="false" afterPath="$PROJECT_DIR$/MiniProjet/src/expressions/TypeFloatExpr.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MiniProjet/src/Expressions/TypeIdenficatorExpr.java" beforeDir="false" afterPath="$PROJECT_DIR$/MiniProjet/src/expressions/TypeIdenficatorExpr.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MiniProjet/src/Expressions/TypeIntegerExpr.java" beforeDir="false" afterPath="$PROJECT_DIR$/MiniProjet/src/expressions/TypeIntegerExpr.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MiniProjet/src/Functions/BinaryFunction.java" beforeDir="false" afterPath="$PROJECT_DIR$/MiniProjet/src/functions/BinaryFunction.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MiniProjet/src/Functions/UnaryFunction.java" beforeDir="false" afterPath="$PROJECT_DIR$/MiniProjet/src/functions/UnaryFunction.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MiniProjet/src/Operator/DivisionSymbol.java" beforeDir="false" afterPath="$PROJECT_DIR$/MiniProjet/src/operator/DivisionSymbol.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MiniProjet/src/Operator/MinusSymbol.java" beforeDir="false" afterPath="$PROJECT_DIR$/MiniProjet/src/operator/MinusSymbol.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MiniProjet/src/Operator/MultiplySymbol.java" beforeDir="false" afterPath="$PROJECT_DIR$/MiniProjet/src/operator/MultiplySymbol.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MiniProjet/src/Operator/PlusSymbol.java" beforeDir="false" afterPath="$PROJECT_DIR$/MiniProjet/src/operator/PlusSymbol.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MiniProjet/src/ParserExpr.java" beforeDir="false" afterPath="$PROJECT_DIR$/MiniProjet/src/ParserExpr.java" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -18,9 +28,9 @@
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/MiniProjet/src/Declarations/Affectation.java">
+        <entry file="file://$PROJECT_DIR$/MiniProjet/src/declarations/Affectation.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="162">
+            <state relative-caret-position="644">
               <caret line="26" column="40" selection-start-line="26" selection-start-column="40" selection-end-line="26" selection-end-column="40" />
               <folding>
                 <element signature="imports" expanded="true" />
@@ -30,9 +40,9 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/MiniProjet/src/Expressions/TypeIdenficatorExpr.java">
+        <entry file="file://$PROJECT_DIR$/MiniProjet/src/expressions/TypeIdenficatorExpr.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="308">
+            <state relative-caret-position="448">
               <caret line="17" column="53" selection-start-line="17" selection-start-column="53" selection-end-line="17" selection-end-column="53" />
               <folding>
                 <element signature="imports" expanded="true" />
@@ -42,16 +52,16 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/MiniProjet/src/Declarations/DeclarationList.java">
+        <entry file="file://$PROJECT_DIR$/MiniProjet/src/declarations/DeclarationList.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="112">
+            <state relative-caret-position="420">
               <caret line="20" selection-start-line="20" selection-end-line="20" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/MiniProjet/src/Operator/MinusSymbol.java">
+        <entry file="file://$PROJECT_DIR$/MiniProjet/src/operator/MinusSymbol.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="448">
               <caret line="21" column="53" selection-start-line="21" selection-start-column="53" selection-end-line="21" selection-end-column="53" />
@@ -60,9 +70,9 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/MiniProjet/src/Operator/PlusSymbol.java">
+        <entry file="file://$PROJECT_DIR$/MiniProjet/src/operator/PlusSymbol.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="209">
+            <state relative-caret-position="448">
               <caret line="19" column="55" selection-start-line="19" selection-start-column="55" selection-end-line="19" selection-end-column="55" />
               <folding>
                 <element signature="imports" expanded="true" />
@@ -72,19 +82,19 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/MiniProjet/src/Operator/MultiplySymbol.java">
+        <entry file="file://$PROJECT_DIR$/MiniProjet/src/operator/MultiplySymbol.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="291">
-              <caret line="20" column="12" selection-start-line="20" selection-start-column="12" selection-end-line="20" selection-end-column="84" />
+            <state relative-caret-position="448">
+              <caret line="19" column="12" selection-start-line="19" selection-start-column="12" selection-end-line="19" selection-end-column="84" />
             </state>
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/MiniProjet/src/Functions/UnaryFunction.java">
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/MiniProjet/src/functions/UnaryFunction.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="347">
-              <caret line="26" column="23" selection-start-line="26" selection-start-column="23" selection-end-line="26" selection-end-column="23" />
+            <state relative-caret-position="535">
+              <caret line="31" column="35" lean-forward="true" selection-start-line="31" selection-start-column="35" selection-end-line="31" selection-end-column="35" />
             </state>
           </provider>
         </entry>
@@ -95,10 +105,10 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/MiniProjet/src/Operator/DivisionSymbol.java">
+        <entry file="file://$PROJECT_DIR$/MiniProjet/src/operator/DivisionSymbol.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="270">
-              <caret line="14" column="35" lean-forward="true" selection-start-line="14" selection-start-column="35" selection-end-line="14" selection-end-column="35" />
+            <state relative-caret-position="308">
+              <caret line="14" column="35" selection-start-line="14" selection-start-column="35" selection-end-line="14" selection-end-column="35" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -106,11 +116,11 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/MiniProjet/parser/ParserExpr.grammar">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1147">
-              <caret line="70" column="44" selection-start-line="70" selection-start-column="44" selection-end-line="70" selection-end-column="44" />
+            <state relative-caret-position="140">
+              <caret line="5" column="9" lean-forward="true" selection-start-line="5" selection-start-column="9" selection-end-line="5" selection-end-column="9" />
             </state>
           </provider>
         </entry>
@@ -172,7 +182,6 @@
         <option value="$PROJECT_DIR$/MiniProjet/src/Constants/FunctionsNames.java" />
         <option value="$PROJECT_DIR$/MiniProjet/src/Constants/Functions.java" />
         <option value="$PROJECT_DIR$/MiniProjet/src/Functions/UFct.java" />
-        <option value="$PROJECT_DIR$/MiniProjet/parser/ParserExpr.grammar" />
         <option value="$PROJECT_DIR$/MiniProjet/src/abstractTree/AbstTree.java" />
         <option value="$PROJECT_DIR$/MiniProjet/src/Main.java" />
         <option value="$PROJECT_DIR$/MiniProjet/src/Expressions/TypeIntegerExpr.java" />
@@ -186,6 +195,8 @@
         <option value="$PROJECT_DIR$/MiniProjet/src/Operator/MinusSymbol.java" />
         <option value="$PROJECT_DIR$/MiniProjet/src/Operator/DivisionSymbol.java" />
         <option value="$PROJECT_DIR$/MiniProjet/src/Functions/UnaryFunction.java" />
+        <option value="$PROJECT_DIR$/MiniProjet/src/functions/UnaryFunction.java" />
+        <option value="$PROJECT_DIR$/MiniProjet/parser/ParserExpr.grammar" />
       </list>
     </option>
   </component>
@@ -200,7 +211,6 @@
     </navigator>
     <panes>
       <pane id="PackagesPane" />
-      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -249,46 +259,47 @@
               <item name="Compilation" type="462c0819:PsiDirectoryNode" />
               <item name="MiniProjet" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="Constants" type="462c0819:PsiDirectoryNode" />
+              <item name="constants" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="Compilation" type="b2602c69:ProjectViewProjectNode" />
               <item name="Compilation" type="462c0819:PsiDirectoryNode" />
               <item name="MiniProjet" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="Declarations" type="462c0819:PsiDirectoryNode" />
+              <item name="declarations" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="Compilation" type="b2602c69:ProjectViewProjectNode" />
               <item name="Compilation" type="462c0819:PsiDirectoryNode" />
               <item name="MiniProjet" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="Expressions" type="462c0819:PsiDirectoryNode" />
+              <item name="expressions" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="Compilation" type="b2602c69:ProjectViewProjectNode" />
               <item name="Compilation" type="462c0819:PsiDirectoryNode" />
               <item name="MiniProjet" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="Functions" type="462c0819:PsiDirectoryNode" />
+              <item name="functions" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="Compilation" type="b2602c69:ProjectViewProjectNode" />
               <item name="Compilation" type="462c0819:PsiDirectoryNode" />
               <item name="MiniProjet" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="Operator" type="462c0819:PsiDirectoryNode" />
+              <item name="operator" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
         </subPane>
       </pane>
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1552249539325" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1552255497714" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/MiniProjet/lib/jflex-full-1.7.0.jar!/" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
@@ -337,18 +348,19 @@
       <workItem from="1552073286663" duration="5807000" />
       <workItem from="1552149613983" duration="6468000" />
       <workItem from="1552226217273" duration="880000" />
-      <workItem from="1552227114028" duration="14345000" />
+      <workItem from="1552227114028" duration="14418000" />
+      <workItem from="1552255101589" duration="366000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="27500000" />
+    <option name="totallyTimeSpent" value="27939000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-2" y="0" width="1924" height="1039" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.25772098" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.2603834" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Image Layers" order="2" />
       <window_info id="Designer" order="3" />
@@ -357,7 +369,7 @@
       <window_info id="Favorites" order="6" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.3297062" />
-      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.36235037" />
+      <window_info anchor="bottom" id="Run" order="2" weight="0.36235037" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -405,7 +417,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/MiniProjet/src/Functions/BinaryFunction.java">
+    <entry file="file://$PROJECT_DIR$/MiniProjet/src/functions/BinaryFunction.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="476">
           <caret line="18" column="16" lean-forward="true" selection-start-line="18" selection-start-column="16" selection-end-line="18" selection-end-column="16" />
@@ -425,7 +437,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/MiniProjet/src/Constants/Functions.java">
+    <entry file="file://$PROJECT_DIR$/MiniProjet/src/constants/Functions.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="196">
           <caret line="7" column="17" selection-start-line="7" selection-start-column="17" selection-end-line="7" selection-end-column="17" />
@@ -446,7 +458,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/MiniProjet/src/Expressions/TypeFloatExpr.java">
+    <entry file="file://$PROJECT_DIR$/MiniProjet/src/expressions/TypeFloatExpr.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="158">
           <caret line="14" column="54" selection-start-line="14" selection-start-column="54" selection-end-line="14" selection-end-column="54" />
@@ -456,7 +468,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/MiniProjet/src/Expressions/TypeIntegerExpr.java">
+    <entry file="file://$PROJECT_DIR$/MiniProjet/src/expressions/TypeIntegerExpr.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="89">
           <caret line="16" column="25" selection-start-line="16" selection-start-column="25" selection-end-line="16" selection-end-column="25" />
@@ -473,9 +485,9 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/MiniProjet/src/Declarations/Affectation.java">
+    <entry file="file://$PROJECT_DIR$/MiniProjet/src/declarations/Affectation.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="162">
+        <state relative-caret-position="644">
           <caret line="26" column="40" selection-start-line="26" selection-start-column="40" selection-end-line="26" selection-end-column="40" />
           <folding>
             <element signature="imports" expanded="true" />
@@ -483,9 +495,9 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/MiniProjet/src/Expressions/TypeIdenficatorExpr.java">
+    <entry file="file://$PROJECT_DIR$/MiniProjet/src/expressions/TypeIdenficatorExpr.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="308">
+        <state relative-caret-position="448">
           <caret line="17" column="53" selection-start-line="17" selection-start-column="53" selection-end-line="17" selection-end-column="53" />
           <folding>
             <element signature="imports" expanded="true" />
@@ -493,16 +505,23 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/MiniProjet/src/Declarations/DeclarationList.java">
+    <entry file="file://$PROJECT_DIR$/MiniProjet/src/declarations/DeclarationList.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="112">
+        <state relative-caret-position="420">
           <caret line="20" selection-start-line="20" selection-end-line="20" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/MiniProjet/src/Operator/PlusSymbol.java">
+    <entry file="file://$PROJECT_DIR$/MiniProjet/src/operator/MinusSymbol.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="209">
+        <state relative-caret-position="448">
+          <caret line="21" column="53" selection-start-line="21" selection-start-column="53" selection-end-line="21" selection-end-column="53" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/MiniProjet/src/operator/PlusSymbol.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="448">
           <caret line="19" column="55" selection-start-line="19" selection-start-column="55" selection-end-line="19" selection-end-column="55" />
           <folding>
             <element signature="imports" expanded="true" />
@@ -510,44 +529,37 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/MiniProjet/parser/ParserExpr.grammar">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1147">
-          <caret line="70" column="44" selection-start-line="70" selection-start-column="44" selection-end-line="70" selection-end-column="44" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/MiniProjet/src/Operator/MinusSymbol.java">
+    <entry file="file://$PROJECT_DIR$/MiniProjet/src/operator/MultiplySymbol.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="448">
-          <caret line="21" column="53" selection-start-line="21" selection-start-column="53" selection-end-line="21" selection-end-column="53" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/MiniProjet/src/Operator/MultiplySymbol.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="291">
-          <caret line="20" column="12" selection-start-line="20" selection-start-column="12" selection-end-line="20" selection-end-column="84" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/MiniProjet/src/Operator/DivisionSymbol.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="270">
-          <caret line="14" column="35" lean-forward="true" selection-start-line="14" selection-start-column="35" selection-end-line="14" selection-end-column="35" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
+          <caret line="19" column="12" selection-start-line="19" selection-start-column="12" selection-end-line="19" selection-end-column="84" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/MiniProjet/data/input">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/MiniProjet/src/Functions/UnaryFunction.java">
+    <entry file="file://$PROJECT_DIR$/MiniProjet/src/operator/DivisionSymbol.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="347">
-          <caret line="26" column="23" selection-start-line="26" selection-start-column="23" selection-end-line="26" selection-end-column="23" />
+        <state relative-caret-position="308">
+          <caret line="14" column="35" selection-start-line="14" selection-start-column="35" selection-end-line="14" selection-end-column="35" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/MiniProjet/src/functions/UnaryFunction.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="535">
+          <caret line="31" column="35" lean-forward="true" selection-start-line="31" selection-start-column="35" selection-end-line="31" selection-end-column="35" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/MiniProjet/parser/ParserExpr.grammar">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="140">
+          <caret line="5" column="9" lean-forward="true" selection-start-line="5" selection-start-column="9" selection-end-line="5" selection-end-column="9" />
         </state>
       </provider>
     </entry>

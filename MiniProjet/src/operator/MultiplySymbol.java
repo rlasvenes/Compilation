@@ -1,8 +1,7 @@
-package Operator;
+package operator;
 
 import abstractTree.AbstTree;
 import abstractTree.EnvironmentInt;
-import beaver.Symbol;
 
 public class MultiplySymbol extends AbstTree {
 
