@@ -14,6 +14,12 @@ public class TypeIntegerExpr extends AbstTree {
 
 	@Override
 	protected void peval(EnvironmentInt environment) throws Exception {
-		environment.putVariable(this.toString(), id.doubleValue());
+		if (id != null) {
+			value = id.doubleValue();
+			environment.putVariable(this.toString(), value);
+		} else {
+			throw new Exception("Integer cannot be null");
+		}
 	}
+
 }

@@ -22,5 +22,10 @@ public class Environment implements EnvironmentInt {
 		return table.get(variable);
 	}
 
-
+	@Override
+	public String toString() {
+		return "Environment{" +
+				"table=" + table +
+				'}';
+	}
 }

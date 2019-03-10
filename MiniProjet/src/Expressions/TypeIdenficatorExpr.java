@@ -15,7 +15,8 @@ public class TypeIdenficatorExpr extends AbstTree {
 	@Override
 	protected void peval(EnvironmentInt environment) throws Exception {
 		if (!id.isEmpty()) {
-			environment.putVariable(this.toString(), environment.getVariableValue(id));
+			value = environment.getVariableValue(id);
+			environment.putVariable(this.toString(), value);
 		} else {
 			throw new Exception("ID cannot be empty (TypeIdenficatorExpr)");
 		}

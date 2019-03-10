@@ -16,12 +16,16 @@ public class DeclarationList extends AbstTree {
 	@Override
 	protected void peval(EnvironmentInt environment) throws Exception {
 		if (left != null && right != null) {
-			System.out.println("LEFT = (" + left + ", " + left.getValue());
-			System.out.println("RIGHT = (" + right + ", " + right.getValue());
+			left.eval(environment); // evaluation du sous-arbre gauche
+			right.eval(environment); // evaluation du sous-arbre droit
+
 			environment.putVariable(left.toString(), left.getValue());
 			environment.putVariable(right.toString(), right.getValue());
+
+			value = right.getValue(); // on récupère la dernière valeur (donc right) APRES avoir évalué les
+									  // sous-arbres gauche et droite.
+
 		} else if (left != null) {
-			System.out.println("HO BOY");
 			value = left.getValue();
 		} else {
 			throw new Exception("Left tree cannot be null (DeclarationList)");

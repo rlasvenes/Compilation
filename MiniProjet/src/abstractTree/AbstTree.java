@@ -1,4 +1,5 @@
 package abstractTree;
+
 import beaver.Symbol;
 
 public abstract class AbstTree extends Symbol implements AbstTreeInt {

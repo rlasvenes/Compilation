@@ -16,9 +16,16 @@ public class MinusSymbol extends AbstTree {
 	@Override
 	protected void peval(EnvironmentInt environment) throws Exception {
 		if (left != null && right != null) {
-			environment.putVariable(this.toString(), left.getValue() - right.getValue());
+			left.eval(environment);
+			right.eval(environment);
+			// TODO
+			value = left.getValue() - right.getValue();
+			System.out.println("--- " + left.getValue() + " - " + right.getValue());
 		} else if (left != null) {
-			environment.putVariable(this.toString(), left.getValue() * (-1));
+			left.eval(environment);
+
+			value = left.getValue() * (-1);
+			environment.putVariable(this.toString(), value);
 		}
 	}
 }

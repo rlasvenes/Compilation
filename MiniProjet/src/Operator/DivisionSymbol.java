@@ -11,8 +11,14 @@ public class DivisionSymbol extends AbstTree {
 
 	@Override
 	protected void peval(EnvironmentInt environment) throws Exception {
-		System.out.println(left.getValue() + " DIV BY " + right.getValue());
-		environment.putVariable(this.toString(), left.getValue() / right.getValue());
+		if (left != null && right != null) {
+			left.eval(environment);
+			right.eval(environment);
+
+			value = left.getValue() / right.getValue();
+		} else {
+			throw new Exception("Left or right tree cannot be null");
+		}
 	}
 
 }

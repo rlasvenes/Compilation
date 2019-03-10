@@ -16,11 +16,17 @@ public class UnaryFunction extends AbstTree {
 	@Override
 	protected void peval(EnvironmentInt environment) throws Exception {
 		if (left != null) {
+		    left.eval(environment);
+
 			if (fct.equals(Functions.SQRT.getName())) {
 				value = Math.sqrt(left.getValue());
 			} else if (fct.equals(Functions.ROUND.getName())) {
 				value = (double) Math.round(left.getValue());
 			}
+
+			environment.putVariable(this.toString(), value);
+
+			left.eval(environment);
 		} else {
 			throw new Exception("Cannot apply unary function to null tree");
 		}

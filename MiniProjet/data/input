@@ -1,1 +1,2 @@
-angle1 = pi/4; round(angle1)
+x = 2 * 3 + 4 + 5 - 6;
+x
