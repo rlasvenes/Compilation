@@ -1,2 +1,1 @@
-x = 2 * 3 + 4 + 5 - 6;
-x
+angle1 = pi/4; resultat = sqrt(2) / 2 - sin(angle1); round(resultat * 1000) / 1000

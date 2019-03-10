@@ -16,6 +16,7 @@ public class DivisionSymbol extends AbstTree {
 			right.eval(environment);
 
 			value = left.getValue() / right.getValue();
+			System.out.println("/// " + left.getValue() + " / " + right.getValue());
 		} else {
 			throw new Exception("Left or right tree cannot be null");
 		}

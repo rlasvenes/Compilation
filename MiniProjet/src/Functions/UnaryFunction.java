@@ -18,10 +18,13 @@ public class UnaryFunction extends AbstTree {
 		if (left != null) {
 		    left.eval(environment);
 
+			System.out.println("FCT NAME = " + fct + " / " + left.getValue());
 			if (fct.equals(Functions.SQRT.getName())) {
 				value = Math.sqrt(left.getValue());
 			} else if (fct.equals(Functions.ROUND.getName())) {
 				value = (double) Math.round(left.getValue());
+			} else if (fct.equals(Functions.SIN.getName())) {
+				value = Math.sin(left.getValue());
 			}
 
 			environment.putVariable(this.toString(), value);

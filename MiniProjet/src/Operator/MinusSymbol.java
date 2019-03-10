@@ -19,8 +19,8 @@ public class MinusSymbol extends AbstTree {
 			left.eval(environment);
 			right.eval(environment);
 			// TODO
-			value = left.getValue() - right.getValue();
 			System.out.println("--- " + left.getValue() + " - " + right.getValue());
+			value = left.getValue() - right.getValue();
 		} else if (left != null) {
 			left.eval(environment);
 
