@@ -8,7 +8,9 @@ import abstractTree.EnvironmentInt;
 
 public class Main {
 	public static void main(String[] args) throws Exception {
-		ScannerExpr input = new ScannerExpr(new FileReader(args[0]));
+		System.out.println("Working Directory : " + System.getProperty("user.dir"));
+
+		ScannerExpr input = new ScannerExpr(new FileReader("MiniProjet/data/input"));
 		ParserExpr parser = new ParserExpr();
 		
 		// Le "%goal" du parser doit être un objet de type AbstTreeInt

@@ -634,82 +634,82 @@ class ScannerExpr extends Scanner {
             // fall through
           case 18: break;
           case 2: 
-            { System.out.println("*** " + yytext()); return new Symbol(Terminals.ID, yyline, yycolumn, yytext());
+            { System.out.println("(jflex) " + yytext()); return new Symbol(Terminals.ID, yyline, yycolumn, yytext());
             } 
             // fall through
           case 19: break;
           case 3: 
-            { System.out.println("*** " + yytext()); return new Symbol(Terminals.INTEGER, yyline, yycolumn, new Integer(yytext()));
+            { System.out.println("(jflex) " + yytext()); return new Symbol(Terminals.INTEGER, yyline, yycolumn, new Integer(yytext()));
             } 
             // fall through
           case 20: break;
           case 4: 
-            { System.out.println("*** " + yytext()); return new Symbol(Terminals.MINUS, yyline, yycolumn);
+            { System.out.println("(jflex) " + yytext()); return new Symbol(Terminals.MINUS, yyline, yycolumn);
             } 
             // fall through
           case 21: break;
           case 5: 
-            { System.out.println("*** " + yytext()); return new Symbol(Terminals.PLUS, yyline, yycolumn);
+            { System.out.println("(jflex) " + yytext()); return new Symbol(Terminals.PLUS, yyline, yycolumn);
             } 
             // fall through
           case 22: break;
           case 6: 
-            { System.out.println("*** " + yytext()); return new Symbol(Terminals.TIMES, yyline, yycolumn);
+            { System.out.println("(jflex) " + yytext()); return new Symbol(Terminals.TIMES, yyline, yycolumn);
             } 
             // fall through
           case 23: break;
           case 7: 
-            { System.out.println("*** " + yytext()); return new Symbol(Terminals.DIV, yyline, yycolumn);
+            { System.out.println("(jflex) " + yytext()); return new Symbol(Terminals.DIV, yyline, yycolumn);
             } 
             // fall through
           case 24: break;
           case 8: 
-            { System.out.println("*** " + yytext()); return new Symbol(Terminals.LPAR, yyline, yycolumn);
+            { System.out.println("(jflex) " + yytext()); return new Symbol(Terminals.LPAR, yyline, yycolumn);
             } 
             // fall through
           case 25: break;
           case 9: 
-            { System.out.println("*** " + yytext()); return new Symbol(Terminals.RPAR, yyline, yycolumn);
+            { System.out.println("(jflex) " + yytext()); return new Symbol(Terminals.RPAR, yyline, yycolumn);
             } 
             // fall through
           case 26: break;
           case 10: 
-            { System.out.println("*** " + yytext()); return new Symbol(Terminals.E, yyline, yycolumn, java.lang.Math.E);
+            { System.out.println("(jflex) " + yytext()); return new Symbol(Terminals.E, yyline, yycolumn, java.lang.Math.E);
             } 
             // fall through
           case 27: break;
           case 11: 
-            { System.out.println("*** " + yytext()); return new Symbol(Terminals.EQ, yyline, yycolumn);
+            { System.out.println("(jflex) " + yytext()); return new Symbol(Terminals.EQ, yyline, yycolumn);
             } 
             // fall through
           case 28: break;
           case 12: 
-            { System.out.println("*** " + yytext()); return new Symbol(Terminals.COMMA, yyline, yycolumn);
+            { System.out.println("(jflex) " + yytext()); return new Symbol(Terminals.COMMA, yyline, yycolumn);
             } 
             // fall through
           case 29: break;
           case 13: 
-            { System.out.println("*** " + yytext()); return new Symbol(Terminals.SEMI, yyline, yycolumn);
+            { System.out.println("(jflex) " + yytext()); return new Symbol(Terminals.SEMI, yyline, yycolumn);
             } 
             // fall through
           case 30: break;
           case 14: 
-            { System.out.println("*** " + yytext()); return new Symbol(Terminals.FLOAT, yyline, yycolumn, new Double(yytext()));
+            { System.out.println("(jflex) " + yytext()); return new Symbol(Terminals.FLOAT, yyline, yycolumn, new Double(yytext()));
             } 
             // fall through
           case 31: break;
           case 15: 
-            { System.out.println("*** " + yytext()); return new Symbol(Terminals.PI, yyline, yycolumn, java.lang.Math.PI);
+            { System.out.println("(jflex) " + yytext()); return new Symbol(Terminals.PI, yyline, yycolumn, java.lang.Math.PI);
             } 
             // fall through
           case 32: break;
           case 16: 
-            { System.out.println("*** " + yytext()); return new Symbol(Terminals.UFCT, yyline, yycolumn, yytext());
+            { System.out.println("(jflex) " + yytext()); return new Symbol(Terminals.UFCT, yyline, yycolumn, yytext());
             } 
             // fall through
           case 33: break;
           case 17: 
-            { System.out.println("*** " + yytext()); return new Symbol(Terminals.BFCT, yyline, yycolumn, yytext());
+            { System.out.println("(jflex) " + yytext()); return new Symbol(Terminals.BFCT, yyline, yycolumn, yytext());
             } 
             // fall through
           case 34: break;

@@ -43,30 +43,30 @@ EnvironmentInt env = new Environment();
 %goal Program;
 
 Program =
-	Declarations.d SEMI Expression.e {: return new Seq(d, e); :}
+	Declarations.d SEMI Expression.e {: return new DeclarationList(d, e); :}
 	;
 
 Declarations =
-	Declarations.d1 SEMI Declaration.d2 {: return new Seq(d1, d2); :}
+	Declarations.d1 SEMI Declaration.d2 {: return new DeclarationList(d1, d2); :}
 	| Declaration.d {: return d; :}
 	;
 
 Declaration =
-	ID.id EQ Expression.e {: return new Aff(e, id); :}
+	ID.id EQ Expression.e {: return new Affectation(e, id); :}
 	;
 
 Expression =
-	Expression.e1 PLUS Expression.e2  {: return new Plus(e1, e2); :}
-	| Expression.e1 MINUS Expression.e2 {: return new Minus(e1, e2); :}
-	| Expression.e1 TIMES Expression.e2 {: return new Multiply(e1, e2); :}
-	| Expression.e1 DIV Expression.e2 {: return new Div(e1, e2); :}
-	| MINUS Expression.e @ UNARY_MINUS {: return new Minus(e); :}
+	Expression.e1 PLUS Expression.e2  {: return new PlusSymbol(e1, e2); :}
+	| Expression.e1 MINUS Expression.e2 {: return new MinusSymbol(e1, e2); :}
+	| Expression.e1 TIMES Expression.e2 {: return new MultiplySymbol(e1, e2); :}
+	| Expression.e1 DIV Expression.e2 {: return new DivisionSymbol(e1, e2); :}
+	| MINUS Expression.e @ UNARY_MINUS {: return new MinusSymbol(e); :}
 	| LPAR Expression.e RPAR  {: return e; :}
-	| UFCT.fct LPAR Expression.e RPAR {: return new UFct(e, fct); :}
-	| BFCT.fct LPAR Expression.e1 COMMA Expression.e2 RPAR {: return new BFct(e1, e2, fct); :}
-	| ID.id {: return new Id(id); :}
-	| INTEGER.i {: return new IntExp(i); :}
-	| FLOAT.f {: return new FloatExp(f); :}
-	| PI.p {: return new FloatExp(p); :}
-	| E.e {: return new FloatExp(e); :}
+	| UFCT.fct LPAR Expression.e RPAR {: return new UnaryFunction(e, fct); :}
+	| BFCT.fct LPAR Expression.e1 COMMA Expression.e2 RPAR {: return new BinaryFunction(e1, e2, fct); :}
+	| ID.id {: return new TypeIdenficatorExpr(id); :}
+	| INTEGER.i {: return new TypeIntegerExpr(i); :}
+	| FLOAT.f {: return new TypeFloatExpr(f); :}
+	| PI.p {: return new TypeFloatExpr(p); :}
+	| E.e {: return new TypeFloatExpr(e); :}
 	;

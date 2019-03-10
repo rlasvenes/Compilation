@@ -21,10 +21,10 @@ public class ParserExpr extends Parser {
 		"B5dL$9pCaGsjByWysI8BP3Vq$uBZX1oJPL8dP#HKUqkgYwfhgjkgUwfrrNtLHk8PpKHze7h" +
 		"uttibvXybwXfYGzx8AtaXp#J9ke$QVOZDl9UMtCcjtCWrgrPi4ME$Uj4I$WKUdIIkgazInF" +
 		"b5wGly6Lxx");
- 
+
 
 static public class MyEvents extends beaver.Parser.Events {
-	
+
 	public void syntaxError(Symbol token) {
 		System.err.print("Erreur de syntaxe ligne ");
 		System.err.println(Symbol.getLine(token.getStart()));
@@ -32,6 +32,8 @@ static public class MyEvents extends beaver.Parser.Events {
 		System.err.println(Terminals.NAMES[token.getId()]);
 	}
 };
+
+EnvironmentInt env = new Environment();
 
 	private final Action[] actions;
 
@@ -44,7 +46,7 @@ static public class MyEvents extends beaver.Parser.Events {
 					final AbstTree d = (AbstTree) _symbol_d.value;
 					final Symbol _symbol_e = _symbols[offset + 3];
 					final AbstTree e = (AbstTree) _symbol_e.value;
-					 return new Seq(d, e);
+					 return new DeclarationList(d, e);
 				}
 			},
 			new Action() {	// [1] Declarations = Declarations.d1 SEMI Declaration.d2
@@ -53,7 +55,7 @@ static public class MyEvents extends beaver.Parser.Events {
 					final AbstTree d1 = (AbstTree) _symbol_d1.value;
 					final Symbol _symbol_d2 = _symbols[offset + 3];
 					final AbstTree d2 = (AbstTree) _symbol_d2.value;
-					 return new Seq(d1, d2);
+					 return new DeclarationList(d1, d2);
 				}
 			},
 			new Action() {	// [2] Declarations = Declaration.d
@@ -69,7 +71,7 @@ static public class MyEvents extends beaver.Parser.Events {
 					final String id = (String) _symbol_id.value;
 					final Symbol _symbol_e = _symbols[offset + 3];
 					final AbstTree e = (AbstTree) _symbol_e.value;
-					 return new Aff(e, id);
+					 return new Affectation(e, id);
 				}
 			},
 			new Action() {	// [4] Expression = Expression.e1 PLUS Expression.e2
@@ -78,7 +80,7 @@ static public class MyEvents extends beaver.Parser.Events {
 					final AbstTree e1 = (AbstTree) _symbol_e1.value;
 					final Symbol _symbol_e2 = _symbols[offset + 3];
 					final AbstTree e2 = (AbstTree) _symbol_e2.value;
-					 return new Plus(e1, e2);
+					 return new PlusSymbol(e1, e2);
 				}
 			},
 			new Action() {	// [5] Expression = Expression.e1 MINUS Expression.e2
@@ -87,7 +89,7 @@ static public class MyEvents extends beaver.Parser.Events {
 					final AbstTree e1 = (AbstTree) _symbol_e1.value;
 					final Symbol _symbol_e2 = _symbols[offset + 3];
 					final AbstTree e2 = (AbstTree) _symbol_e2.value;
-					 return new Minus(e1, e2);
+					 return new MinusSymbol(e1, e2);
 				}
 			},
 			new Action() {	// [6] Expression = Expression.e1 TIMES Expression.e2
@@ -96,7 +98,7 @@ static public class MyEvents extends beaver.Parser.Events {
 					final AbstTree e1 = (AbstTree) _symbol_e1.value;
 					final Symbol _symbol_e2 = _symbols[offset + 3];
 					final AbstTree e2 = (AbstTree) _symbol_e2.value;
-					 return new Multiply(e1, e2);
+					 return new MultiplySymbol(e1, e2);
 				}
 			},
 			new Action() {	// [7] Expression = Expression.e1 DIV Expression.e2
@@ -105,14 +107,14 @@ static public class MyEvents extends beaver.Parser.Events {
 					final AbstTree e1 = (AbstTree) _symbol_e1.value;
 					final Symbol _symbol_e2 = _symbols[offset + 3];
 					final AbstTree e2 = (AbstTree) _symbol_e2.value;
-					 return new Div(e1, e2);
+					 return new DivisionSymbol(e1, e2);
 				}
 			},
 			new Action() {	// [8] Expression = MINUS Expression.e
 				public Symbol reduce(Symbol[] _symbols, int offset) {
 					final Symbol _symbol_e = _symbols[offset + 2];
 					final AbstTree e = (AbstTree) _symbol_e.value;
-					 return new Minus(e);
+					 return new MinusSymbol(e);
 				}
 			},
 			new Action() {	// [9] Expression = LPAR Expression.e RPAR
@@ -128,7 +130,7 @@ static public class MyEvents extends beaver.Parser.Events {
 					final String fct = (String) _symbol_fct.value;
 					final Symbol _symbol_e = _symbols[offset + 3];
 					final AbstTree e = (AbstTree) _symbol_e.value;
-					 return new UFct(e, fct);
+					 return new UnaryFunction(e, fct);
 				}
 			},
 			new Action() {	// [11] Expression = BFCT.fct LPAR Expression.e1 COMMA Expression.e2 RPAR
@@ -139,42 +141,42 @@ static public class MyEvents extends beaver.Parser.Events {
 					final AbstTree e1 = (AbstTree) _symbol_e1.value;
 					final Symbol _symbol_e2 = _symbols[offset + 5];
 					final AbstTree e2 = (AbstTree) _symbol_e2.value;
-					 return new BFct(e1, e2, fct);
+					 return new BinaryFunction(e1, e2, fct);
 				}
 			},
 			new Action() {	// [12] Expression = ID.id
 				public Symbol reduce(Symbol[] _symbols, int offset) {
 					final Symbol _symbol_id = _symbols[offset + 1];
 					final String id = (String) _symbol_id.value;
-					 return new Id(id);
+					 return new TypeIdenficatorExpr(id);
 				}
 			},
 			new Action() {	// [13] Expression = INTEGER.i
 				public Symbol reduce(Symbol[] _symbols, int offset) {
 					final Symbol _symbol_i = _symbols[offset + 1];
 					final Integer i = (Integer) _symbol_i.value;
-					 return new IntExp(i);
+					 return new TypeIntegerExpr(i);
 				}
 			},
 			new Action() {	// [14] Expression = FLOAT.f
 				public Symbol reduce(Symbol[] _symbols, int offset) {
 					final Symbol _symbol_f = _symbols[offset + 1];
 					final Double f = (Double) _symbol_f.value;
-					 return new FloatExp(f);
+					 return new TypeFloatExpr(f);
 				}
 			},
 			new Action() {	// [15] Expression = PI.p
 				public Symbol reduce(Symbol[] _symbols, int offset) {
 					final Symbol _symbol_p = _symbols[offset + 1];
 					final Double p = (Double) _symbol_p.value;
-					 return new FloatExp(p);
+					 return new TypeFloatExpr(p);
 				}
 			},
 			new Action() {	// [16] Expression = E.e
 				public Symbol reduce(Symbol[] _symbols, int offset) {
 					final Symbol _symbol_e = _symbols[offset + 1];
 					final Double e = (Double) _symbol_e.value;
-					 return new FloatExp(e);
+					 return new TypeFloatExpr(e);
 				}
 			}
 		};

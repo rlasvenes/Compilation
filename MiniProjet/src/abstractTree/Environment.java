@@ -13,7 +13,7 @@ public class Environment implements EnvironmentInt {
 	@Override
 	public void putVariable(String variable, Double value) {
 		table.put(variable, value);
-		System.out.println("Enregistre " + variable + " " + value);
+		System.out.println("Enregistre " + variable + " : " + value);
 	}
 
 	@Override

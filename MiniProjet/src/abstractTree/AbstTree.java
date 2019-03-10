@@ -29,7 +29,7 @@ public abstract class AbstTree extends Symbol implements AbstTreeInt {
 	public String toString() {
 		if (left != null)
 			if (right != null)
-				return this.getClass().getSimpleName() + "(" + left.toString() + "," + right.toString() + ")";
+				return this.getClass().getSimpleName() + "(" + left.toString() + ", " + right.toString() + ")";
 			else
 				return this.getClass().getSimpleName() + "(" + left.toString() + ")";
 		else
