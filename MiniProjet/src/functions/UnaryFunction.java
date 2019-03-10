@@ -16,9 +16,8 @@ public class UnaryFunction extends AbstTree {
 	@Override
 	protected void peval(EnvironmentInt environment) throws Exception {
 		if (left != null) {
-		    left.eval(environment);
+		    left.eval(environment); // évaluer le seul fils, car il se peut que ce soit une expression (ex: sin(1 * (5-6)))
 
-			System.out.println("FCT NAME = " + fct + " / " + left.getValue());
 			if (fct.equals(Functions.SQRT.getName())) {
 				value = Math.sqrt(left.getValue());
 			} else if (fct.equals(Functions.ROUND.getName())) {
@@ -28,8 +27,6 @@ public class UnaryFunction extends AbstTree {
 			}
 
 			environment.putVariable(this.toString(), value);
-
-			left.eval(environment);
 		} else {
 			throw new Exception("Cannot apply unary function to null tree");
 		}

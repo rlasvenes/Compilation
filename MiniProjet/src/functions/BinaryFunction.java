@@ -15,7 +15,7 @@ public class BinaryFunction extends AbstTree {
 	@Override
 	protected void peval(EnvironmentInt environment) throws Exception {
 		if (left != null && right != null) {
-//			Math.round()
+			// TODO: Implémenter le corps de BinaryFunction
 		} else {
 			throw new Exception("Cannot apply binary function to null arguments");
 		}
