@@ -3,3 +3,43 @@
 // Vous pouvez ajouter des commentaires ici          //
 //                                                   //
 ///////////////////////////////////////////////////////
+
+.
+├── build.xml
+├── data
+│   └── input
+├── lib
+│   ├── beaver-ant.jar
+│   ├── beaver-cc.jar
+│   ├── beaver-rt.jar
+│   └── jflex-full-1.7.0.jar
+├── miniprojet-2019.pdf
+├── parser
+│   └── ParserExpr.grammar
+├── README
+├── scanner
+│   └── ScannerExpr.jflex
+└── src
+    ├── abstractTree
+    │   ├── AbstTreeInt.java
+    │   ├── AbstTree.java
+    │   ├── EnvironmentInt.java
+    │   └── Environment.java
+    ├── Constants
+    │   └── Functions.java
+    ├── Declarations
+    │   ├── Affectation.java
+    │   └── DeclarationList.java
+    ├── Expressions
+    │   ├── TypeFloatExpr.java
+    │   ├── TypeIdenficatorExpr.java
+    │   └── TypeIntegerExpr.java
+    ├── Functions
+    │   ├── BinaryFunction.java
+    │   └── UnaryFunction.java
+    ├── Main.java
+    └── Operator
+        ├── DivisionSymbol.java
+        ├── MinusSymbol.java
+        ├── MultiplySymbol.java
+        └── PlusSymbol.java
