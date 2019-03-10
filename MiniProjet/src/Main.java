@@ -6,14 +6,14 @@ import abstractTree.EnvironmentInt;
 import java.io.FileReader;
 
 public class Main {
-	public static void main(String[] args) throws Exception {
-		System.out.println("Working Directory : " + System.getProperty("user.dir"));
+    public static void main(String[] args) throws Exception {
+        System.out.println("Working Directory : " + System.getProperty("user.dir"));
 
-		ScannerExpr input = new ScannerExpr(new FileReader(args[0]));
-		ParserExpr parser = new ParserExpr();
+        ScannerExpr input = new ScannerExpr(new FileReader(args[0]));
+        ParserExpr parser = new ParserExpr();
 
-		// TODO: Il serait intéressant de gérer différents types d'exceptions qui pourrait être levé lors du "parsage"
-		try {
+        // TODO: Il serait intéressant de gérer différents types d'exceptions qui pourrait être levé lors du "parsage"
+        try {
             // Le "%goal" du parser doit être un objet de type AbstTreeInt
             AbstTreeInt expr = (AbstTree) parser.parse(input);
 
@@ -28,5 +28,5 @@ public class Main {
             System.out.println("EXCEPTION ATTRAPÉE ! ");
             e.printStackTrace();
         }
-	}
+    }
 }
