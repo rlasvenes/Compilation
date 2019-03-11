@@ -10,6 +10,7 @@ public class TypeIdenficatorExpr extends AbstTree {
 	public TypeIdenficatorExpr(String id) {
 		super();
 		this.id = id;
+		token = id;
 	}
 
 	@Override

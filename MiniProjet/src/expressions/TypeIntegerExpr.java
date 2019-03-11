@@ -10,6 +10,7 @@ public class TypeIntegerExpr extends AbstTree {
 	public TypeIntegerExpr(Integer id) {
 		super();
 		this.id = id;
+		token = id.toString();
 	}
 
 	@Override

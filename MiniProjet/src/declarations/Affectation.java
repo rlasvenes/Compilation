@@ -10,6 +10,7 @@ public class Affectation extends AbstTree {
 	public Affectation(AbstTree e1, String id) {
 		super(e1);
 		this.id = id;
+		token = "=";
 	}
 
 	public Affectation(AbstTree e) {

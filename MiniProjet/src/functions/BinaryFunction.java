@@ -20,13 +20,12 @@ public class BinaryFunction extends AbstTree {
 			right.eval(environment);
 
 			if (fct.equals(Functions.MIN.getName())) {
+				token = Functions.MIN.getName();
 				value = Math.min(left.getValue(), right.getValue());
 			} else if (fct.equals(Functions.MAX.getName())) {
+				token = Functions.MAX.getName();
 				value = Math.max(left.getValue(), right.getValue());
 			}
-
-			System.out.println("BFCT ---> " + left + " / " + right);
-			// TODO: Implémenter le corps de BinaryFunction
 		} else {
 			throw new Exception("Cannot apply binary function to null arguments");
 		}

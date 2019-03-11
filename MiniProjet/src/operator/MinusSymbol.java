@@ -11,6 +11,7 @@ public class MinusSymbol extends AbstTree {
 
 	public MinusSymbol(AbstTree e) {
 		super(e);
+		token = "-";
 	}
 
 	@Override

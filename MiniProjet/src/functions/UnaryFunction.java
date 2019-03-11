@@ -19,10 +19,13 @@ public class UnaryFunction extends AbstTree {
 		    left.eval(environment); // évaluer le seul fils, car il se peut que ce soit une expression (ex: sin(1 * (5-6)))
 
 			if (fct.equals(Functions.SQRT.getName())) {
+				token = Functions.SQRT.getName();
 				value = Math.sqrt(left.getValue());
 			} else if (fct.equals(Functions.ROUND.getName())) {
+				token = Functions.ROUND.getName();
 				value = (double) Math.round(left.getValue());
 			} else if (fct.equals(Functions.SIN.getName())) {
+				token = Functions.SIN.getName();
 				value = Math.sin(left.getValue());
 			}
 

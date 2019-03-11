@@ -7,6 +7,7 @@ public abstract class AbstTree extends Symbol implements AbstTreeInt {
 	protected AbstTree left;
 	protected AbstTree right;
 	protected Double value;
+	protected String token;
 
 	public AbstTree(AbstTree left, AbstTree right) {
 		super();
@@ -27,14 +28,21 @@ public abstract class AbstTree extends Symbol implements AbstTreeInt {
 		return value;
 	}
 
+	public AbstTree getLeft() { return left; }
+	public AbstTree getRight() { return right; }
+
 	public String toString() {
 		if (left != null)
-			if (right != null)
-				return this.getClass().getSimpleName() + "(" + left.toString() + ", " + right.toString() + ")";
-			else
-				return this.getClass().getSimpleName() + "(" + left.toString() + ")";
+		if (right != null)
+			return this.getClass().getSimpleName() + "(" + left.toString() + ", " + right.toString() + ")";
+		else
+			return this.getClass().getSimpleName() + "(" + left.toString() + ")";
 		else
 			return this.getClass().getSimpleName();
+	}
+
+	public void printAST() {
+		Visualizer.toDOT("file.dot", this);
 	}
 
 	public void eval(EnvironmentInt environment) throws Exception {System.out.println("Eval:" + toString()); this.peval(environment);};

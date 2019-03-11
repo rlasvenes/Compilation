@@ -4,8 +4,11 @@ import abstractTree.Environment;
 import abstractTree.EnvironmentInt;
 
 import java.io.FileReader;
+import java.io.FileWriter;
+import java.io.File;
 
 public class Main {
+
     public static void main(String[] args) throws Exception {
         System.out.println("Working Directory : " + System.getProperty("user.dir"));
 
@@ -20,10 +23,12 @@ public class Main {
             // On doit pouvoir l'afficher
             System.out.println(expr.toString());
 
-            //  Il doit pouvoir s'évaluer avec un environnement
+            //  Il doit pouvoir s'évaluer avec un ensvironnement
             EnvironmentInt environment = new Environment();
             expr.eval(environment);
             System.out.println("Résultat: " + expr.getValue());
+            
+            expr.printAST();
         } catch (Exception e) {
             System.out.println("EXCEPTION ATTRAPÉE ! ");
             e.printStackTrace();
