@@ -41,14 +41,14 @@ public class Visualizer {
         int lChild = 2*i;
         int rChild = 2*i+1;
 
-        if (node.getLeft()  != null) {
+        if (node.left  != null) {
             acc.append(String.format("node%d -> node%d;\n", i, lChild));
-            toDOT(node.getLeft(), acc, lChild);
+            toDOT(node.left, acc, lChild);
         }
 
-        if (node.getRight() != null) {
+        if (node.right != null) {
             acc.append(String.format("node%d -> node%d;\n", i, rChild));
-            toDOT(node.getRight(), acc, rChild);
+            toDOT(node.right, acc, rChild);
         }
 
         return acc;

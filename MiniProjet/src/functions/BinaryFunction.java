@@ -26,6 +26,8 @@ public class BinaryFunction extends AbstTree {
 				token = Functions.MAX.getName();
 				value = Math.max(left.getValue(), right.getValue());
 			}
+
+			environment.putVariable(this.toString(), value);
 		} else {
 			throw new Exception("Cannot apply binary function to null arguments");
 		}

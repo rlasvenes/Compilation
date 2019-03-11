@@ -20,8 +20,8 @@ public class MinusSymbol extends AbstTree {
 			left.eval(environment);
 			right.eval(environment);
 
-			System.out.println("[CALCUL] --- " + left.getValue() + " - " + right.getValue());
 			value = left.getValue() - right.getValue();
+			environment.putVariable(this.toString(), value);
 		} else if (left != null) {
 			left.eval(environment);
 			value = left.getValue() * (-1);

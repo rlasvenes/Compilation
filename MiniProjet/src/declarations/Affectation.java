@@ -20,8 +20,6 @@ public class Affectation extends AbstTree {
 	@Override
 	protected void peval(EnvironmentInt environment) throws Exception {
 		if (left != null) {
-//			environment.putVariable(id, left.getValue());
-
             left.eval(environment);
 
 			if (!id.isEmpty()) {
