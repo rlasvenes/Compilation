@@ -1,4 +1,4 @@
-Working Directory : /home/rlasvenes/Bureau/Informatique/LICENCE/L3/Compilation/MiniProjet
+Working Directory : /autofs/unityaccount/cremi/rlasvenes/Compilation/MiniProjet
 (jflex) angle1
 (jflex) =
 (jflex) pi
@@ -19,6 +19,12 @@ Working Directory : /home/rlasvenes/Bureau/Informatique/LICENCE/L3/Compilation/M
 (jflex) angle1
 (jflex) )
 (jflex) ;
+(jflex) resultat
+(jflex) =
+(jflex) max
+(jflex) (
+(jflex) 1.4
+(jflex) ,
 (jflex) round
 (jflex) (
 (jflex) resultat
@@ -27,9 +33,18 @@ Working Directory : /home/rlasvenes/Bureau/Informatique/LICENCE/L3/Compilation/M
 (jflex) )
 (jflex) /
 (jflex) 1000
+(jflex) )
+(jflex) ;
+(jflex) failed
+(jflex) =
+(jflex) toto
+(jflex) ;
+(jflex) resultat
 
-DeclarationList(DeclarationList(Affectation(DivisionSymbol(TypeFloatExpr, TypeIntegerExpr)), Affectation(MinusSymbol(DivisionSymbol(UnaryFunction(TypeIntegerExpr), TypeIntegerExpr), UnaryFunction(TypeIdenficatorExpr)))), DivisionSymbol(UnaryFunction(MultiplySymbol(TypeIdenficatorExpr, TypeIntegerExpr)), TypeIntegerExpr))
-Eval:DeclarationList(DeclarationList(Affectation(DivisionSymbol(TypeFloatExpr, TypeIntegerExpr)), Affectation(MinusSymbol(DivisionSymbol(UnaryFunction(TypeIntegerExpr), TypeIntegerExpr), UnaryFunction(TypeIdenficatorExpr)))), DivisionSymbol(UnaryFunction(MultiplySymbol(TypeIdenficatorExpr, TypeIntegerExpr)), TypeIntegerExpr))
+DeclarationList(DeclarationList(DeclarationList(DeclarationList(Affectation(DivisionSymbol(TypeFloatExpr, TypeIntegerExpr)), Affectation(MinusSymbol(DivisionSymbol(UnaryFunction(TypeIntegerExpr), TypeIntegerExpr), UnaryFunction(TypeIdenficatorExpr)))), Affectation(BinaryFunction(TypeFloatExpr, DivisionSymbol(UnaryFunction(MultiplySymbol(TypeIdenficatorExpr, TypeIntegerExpr)), TypeIntegerExpr)))), Affectation(TypeIdenficatorExpr)), TypeIdenficatorExpr)
+Eval:DeclarationList(DeclarationList(DeclarationList(DeclarationList(Affectation(DivisionSymbol(TypeFloatExpr, TypeIntegerExpr)), Affectation(MinusSymbol(DivisionSymbol(UnaryFunction(TypeIntegerExpr), TypeIntegerExpr), UnaryFunction(TypeIdenficatorExpr)))), Affectation(BinaryFunction(TypeFloatExpr, DivisionSymbol(UnaryFunction(MultiplySymbol(TypeIdenficatorExpr, TypeIntegerExpr)), TypeIntegerExpr)))), Affectation(TypeIdenficatorExpr)), TypeIdenficatorExpr)
+Eval:DeclarationList(DeclarationList(DeclarationList(Affectation(DivisionSymbol(TypeFloatExpr, TypeIntegerExpr)), Affectation(MinusSymbol(DivisionSymbol(UnaryFunction(TypeIntegerExpr), TypeIntegerExpr), UnaryFunction(TypeIdenficatorExpr)))), Affectation(BinaryFunction(TypeFloatExpr, DivisionSymbol(UnaryFunction(MultiplySymbol(TypeIdenficatorExpr, TypeIntegerExpr)), TypeIntegerExpr)))), Affectation(TypeIdenficatorExpr))
+Eval:DeclarationList(DeclarationList(Affectation(DivisionSymbol(TypeFloatExpr, TypeIntegerExpr)), Affectation(MinusSymbol(DivisionSymbol(UnaryFunction(TypeIntegerExpr), TypeIntegerExpr), UnaryFunction(TypeIdenficatorExpr)))), Affectation(BinaryFunction(TypeFloatExpr, DivisionSymbol(UnaryFunction(MultiplySymbol(TypeIdenficatorExpr, TypeIntegerExpr)), TypeIntegerExpr))))
 Eval:DeclarationList(Affectation(DivisionSymbol(TypeFloatExpr, TypeIntegerExpr)), Affectation(MinusSymbol(DivisionSymbol(UnaryFunction(TypeIntegerExpr), TypeIntegerExpr), UnaryFunction(TypeIdenficatorExpr))))
 Eval:Affectation(DivisionSymbol(TypeFloatExpr, TypeIntegerExpr))
 Eval:DivisionSymbol(TypeFloatExpr, TypeIntegerExpr)
@@ -58,6 +73,10 @@ Enregistre UnaryFunction(TypeIdenficatorExpr) : 0.7071067811865475
 Enregistre resultat : 1.1102230246251565E-16
 Enregistre Affectation(DivisionSymbol(TypeFloatExpr, TypeIntegerExpr)) : 0.7853981633974483
 Enregistre Affectation(MinusSymbol(DivisionSymbol(UnaryFunction(TypeIntegerExpr), TypeIntegerExpr), UnaryFunction(TypeIdenficatorExpr))) : 1.1102230246251565E-16
+Eval:Affectation(BinaryFunction(TypeFloatExpr, DivisionSymbol(UnaryFunction(MultiplySymbol(TypeIdenficatorExpr, TypeIntegerExpr)), TypeIntegerExpr)))
+Eval:BinaryFunction(TypeFloatExpr, DivisionSymbol(UnaryFunction(MultiplySymbol(TypeIdenficatorExpr, TypeIntegerExpr)), TypeIntegerExpr))
+Eval:TypeFloatExpr
+Enregistre TypeFloatExpr : 1.4
 Eval:DivisionSymbol(UnaryFunction(MultiplySymbol(TypeIdenficatorExpr, TypeIntegerExpr)), TypeIntegerExpr)
 Eval:UnaryFunction(MultiplySymbol(TypeIdenficatorExpr, TypeIntegerExpr))
 Eval:MultiplySymbol(TypeIdenficatorExpr, TypeIntegerExpr)
@@ -71,6 +90,20 @@ Enregistre UnaryFunction(MultiplySymbol(TypeIdenficatorExpr, TypeIntegerExpr)) :
 Eval:TypeIntegerExpr
 Enregistre TypeIntegerExpr : 1000.0
 [CALCUL] /// 0.0 / 1000.0
+BFCT ---> TypeFloatExpr / DivisionSymbol(UnaryFunction(MultiplySymbol(TypeIdenficatorExpr, TypeIntegerExpr)), TypeIntegerExpr)
+Enregistre resultat : 1.4
 Enregistre DeclarationList(Affectation(DivisionSymbol(TypeFloatExpr, TypeIntegerExpr)), Affectation(MinusSymbol(DivisionSymbol(UnaryFunction(TypeIntegerExpr), TypeIntegerExpr), UnaryFunction(TypeIdenficatorExpr)))) : 1.1102230246251565E-16
-Enregistre DivisionSymbol(UnaryFunction(MultiplySymbol(TypeIdenficatorExpr, TypeIntegerExpr)), TypeIntegerExpr) : 0.0
-Résultat: 0.0
+Enregistre Affectation(BinaryFunction(TypeFloatExpr, DivisionSymbol(UnaryFunction(MultiplySymbol(TypeIdenficatorExpr, TypeIntegerExpr)), TypeIntegerExpr))) : 1.4
+Eval:Affectation(TypeIdenficatorExpr)
+Eval:TypeIdenficatorExpr
+Retrouve toto null
+Enregistre TypeIdenficatorExpr : null
+Enregistre failed : null
+Enregistre DeclarationList(DeclarationList(Affectation(DivisionSymbol(TypeFloatExpr, TypeIntegerExpr)), Affectation(MinusSymbol(DivisionSymbol(UnaryFunction(TypeIntegerExpr), TypeIntegerExpr), UnaryFunction(TypeIdenficatorExpr)))), Affectation(BinaryFunction(TypeFloatExpr, DivisionSymbol(UnaryFunction(MultiplySymbol(TypeIdenficatorExpr, TypeIntegerExpr)), TypeIntegerExpr)))) : 1.4
+Enregistre Affectation(TypeIdenficatorExpr) : null
+Eval:TypeIdenficatorExpr
+Retrouve resultat 1.4
+Enregistre TypeIdenficatorExpr : 1.4
+Enregistre DeclarationList(DeclarationList(DeclarationList(Affectation(DivisionSymbol(TypeFloatExpr, TypeIntegerExpr)), Affectation(MinusSymbol(DivisionSymbol(UnaryFunction(TypeIntegerExpr), TypeIntegerExpr), UnaryFunction(TypeIdenficatorExpr)))), Affectation(BinaryFunction(TypeFloatExpr, DivisionSymbol(UnaryFunction(MultiplySymbol(TypeIdenficatorExpr, TypeIntegerExpr)), TypeIntegerExpr)))), Affectation(TypeIdenficatorExpr)) : null
+Enregistre TypeIdenficatorExpr : 1.4
+Résultat: 1.4

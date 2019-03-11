@@ -30,7 +30,7 @@ public class Affectation extends AbstTree {
 				// TODO
 			}
 		} else {
-			throw new Exception("Left tree cannot be null");
+			throw new Exception("Left tree cannot be null at line: " + getStart());
 		}
 	}
 

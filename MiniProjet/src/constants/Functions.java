@@ -10,6 +10,8 @@ public enum Functions {
     FLOOR("floor"),
     ABS("abs"),
     SQRT("sqrt"),
+    MIN("min"),
+    MAX("max"),
     ATAN2("atan2");
 
     private String name;

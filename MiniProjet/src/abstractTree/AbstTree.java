@@ -38,6 +38,6 @@ public abstract class AbstTree extends Symbol implements AbstTreeInt {
 	}
 
 	public void eval(EnvironmentInt environment) throws Exception {System.out.println("Eval:" + toString()); this.peval(environment);};
-	
+
 	abstract protected void peval(EnvironmentInt environment) throws Exception;
 }
