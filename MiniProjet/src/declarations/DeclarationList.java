@@ -20,8 +20,8 @@ public class DeclarationList extends AbstTree {
 			left.eval(environment); // evaluation du sous-arbre gauche
 			right.eval(environment); // evaluation du sous-arbre droit
 
-			environment.putVariable(left.toString(), left.getValue());
-			environment.putVariable(right.toString(), right.getValue());
+//			environment.putVariable(left.toString(), left.getValue());
+//			environment.putVariable(right.toString(), right.getValue());
 
 			value = right.getValue(); // on récupère la dernière valeur (donc right) APRES avoir évalué les
 									  // sous-arbres gauche et droite.

@@ -17,7 +17,7 @@ public class PlusSymbol extends AbstTree {
 			right.eval(environment);
 
 			value = left.getValue() + right.getValue();
-			System.out.println("[CALCUL] +++ " + left.getValue() + " + " + right.getValue());
+			environment.putVariable(this.toString(), value);
 		} else {
 			throw new Exception("left or right tree cannot be null");
 		}

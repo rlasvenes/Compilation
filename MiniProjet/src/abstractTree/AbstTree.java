@@ -28,9 +28,6 @@ public abstract class AbstTree extends Symbol implements AbstTreeInt {
 		return value;
 	}
 
-	public AbstTree getLeft() { return left; }
-	public AbstTree getRight() { return right; }
-
 	public String toString() {
 		if (left != null)
 			if (right != null)

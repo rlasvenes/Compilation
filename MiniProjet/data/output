@@ -1,0 +1,73 @@
+Working Directory : /home/rlasvenes/Bureau/Informatique/LICENCE/L3/Compilation/MiniProjet
+(jflex) angle1
+(jflex) =
+(jflex) pi
+(jflex) /
+(jflex) 4
+(jflex) ;
+(jflex) resultat
+(jflex) =
+(jflex) sqrt
+(jflex) (
+(jflex) 2
+(jflex) )
+(jflex) /
+(jflex) 2
+(jflex) -
+(jflex) sin
+(jflex) (
+(jflex) angle1
+(jflex) )
+(jflex) ;
+(jflex) round
+(jflex) (
+(jflex) resultat
+(jflex) *
+(jflex) 1000
+(jflex) )
+(jflex) /
+(jflex) 1000
+
+DeclarationList(DeclarationList(Affectation(DivisionSymbol(TypeFloatExpr, TypeIntegerExpr)), Affectation(MinusSymbol(DivisionSymbol(UnaryFunction(TypeIntegerExpr), TypeIntegerExpr), UnaryFunction(TypeIdenficatorExpr)))), DivisionSymbol(UnaryFunction(MultiplySymbol(TypeIdenficatorExpr, TypeIntegerExpr)), TypeIntegerExpr))
+Eval:DeclarationList(DeclarationList(Affectation(DivisionSymbol(TypeFloatExpr, TypeIntegerExpr)), Affectation(MinusSymbol(DivisionSymbol(UnaryFunction(TypeIntegerExpr), TypeIntegerExpr), UnaryFunction(TypeIdenficatorExpr)))), DivisionSymbol(UnaryFunction(MultiplySymbol(TypeIdenficatorExpr, TypeIntegerExpr)), TypeIntegerExpr))
+Eval:DeclarationList(Affectation(DivisionSymbol(TypeFloatExpr, TypeIntegerExpr)), Affectation(MinusSymbol(DivisionSymbol(UnaryFunction(TypeIntegerExpr), TypeIntegerExpr), UnaryFunction(TypeIdenficatorExpr))))
+Eval:Affectation(DivisionSymbol(TypeFloatExpr, TypeIntegerExpr))
+Eval:DivisionSymbol(TypeFloatExpr, TypeIntegerExpr)
+Eval:TypeFloatExpr
+Environment{table={}}
+Enregistre TypeFloatExpr : 3.141592653589793
+Eval:TypeIntegerExpr
+Enregistre TypeIntegerExpr : 4.0
+Enregistre DivisionSymbol(TypeFloatExpr, TypeIntegerExpr) : 0.7853981633974483
+Enregistre angle1 : 0.7853981633974483
+Eval:Affectation(MinusSymbol(DivisionSymbol(UnaryFunction(TypeIntegerExpr), TypeIntegerExpr), UnaryFunction(TypeIdenficatorExpr)))
+Eval:MinusSymbol(DivisionSymbol(UnaryFunction(TypeIntegerExpr), TypeIntegerExpr), UnaryFunction(TypeIdenficatorExpr))
+Eval:DivisionSymbol(UnaryFunction(TypeIntegerExpr), TypeIntegerExpr)
+Eval:UnaryFunction(TypeIntegerExpr)
+Eval:TypeIntegerExpr
+Enregistre TypeIntegerExpr : 2.0
+Enregistre UnaryFunction(TypeIntegerExpr) : 1.4142135623730951
+Eval:TypeIntegerExpr
+Enregistre TypeIntegerExpr : 2.0
+Enregistre DivisionSymbol(UnaryFunction(TypeIntegerExpr), TypeIntegerExpr) : 0.7071067811865476
+Eval:UnaryFunction(TypeIdenficatorExpr)
+Eval:TypeIdenficatorExpr
+Retrouve angle1 0.7853981633974483
+Enregistre TypeIdenficatorExpr : 0.7853981633974483
+Enregistre UnaryFunction(TypeIdenficatorExpr) : 0.7071067811865475
+Enregistre MinusSymbol(DivisionSymbol(UnaryFunction(TypeIntegerExpr), TypeIntegerExpr), UnaryFunction(TypeIdenficatorExpr)) : 1.1102230246251565E-16
+Enregistre resultat : 1.1102230246251565E-16
+Eval:DivisionSymbol(UnaryFunction(MultiplySymbol(TypeIdenficatorExpr, TypeIntegerExpr)), TypeIntegerExpr)
+Eval:UnaryFunction(MultiplySymbol(TypeIdenficatorExpr, TypeIntegerExpr))
+Eval:MultiplySymbol(TypeIdenficatorExpr, TypeIntegerExpr)
+Eval:TypeIdenficatorExpr
+Retrouve resultat 1.1102230246251565E-16
+Enregistre TypeIdenficatorExpr : 1.1102230246251565E-16
+Eval:TypeIntegerExpr
+Enregistre TypeIntegerExpr : 1000.0
+Enregistre MultiplySymbol(TypeIdenficatorExpr, TypeIntegerExpr) : 1.1102230246251565E-13
+Enregistre UnaryFunction(MultiplySymbol(TypeIdenficatorExpr, TypeIntegerExpr)) : 0.0
+Eval:TypeIntegerExpr
+Enregistre TypeIntegerExpr : 1000.0
+Enregistre DivisionSymbol(UnaryFunction(MultiplySymbol(TypeIdenficatorExpr, TypeIntegerExpr)), TypeIntegerExpr) : 0.0
+Résultat: 0.0
