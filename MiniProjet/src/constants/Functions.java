@@ -12,6 +12,7 @@ public enum Functions {
     SQRT("sqrt"),
     MIN("min"),
     MAX("max"),
+    POW("pow"),
     ATAN2("atan2");
 
     private String name;

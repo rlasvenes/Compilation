@@ -25,9 +25,17 @@ public class BinaryFunction extends AbstTree {
 			} else if (fct.equals(Functions.MAX.getName())) {
 				token = Functions.MAX.getName();
 				value = Math.max(left.getValue(), right.getValue());
+			} else if (fct.equals(Functions.POW.getName())) {
+				token = Functions.POW.getName();
+				value = Math.pow(left.getValue(), right.getValue());
 			}
 		} else {
 			throw new Exception("Cannot apply binary function to null arguments");
 		}
+	}
+	
+	@Override
+	public String toString() {
+		return fct;
 	}
 }

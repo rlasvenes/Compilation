@@ -21,4 +21,8 @@ public class TypeFloatExpr extends AbstTree {
 		System.out.println(environment);
 		environment.putVariable(this.toString(), value);
 	}
+
+	public String toString() {
+		return value.toString();
+	}
 }

@@ -27,6 +27,7 @@ public class DeclarationList extends AbstTree {
 									  // sous-arbres gauche et droite.
 
 		} else if (left != null) {
+			left.eval(environment); // evaluation du sous-arbre gauche
 			value = left.getValue();
 		} else {
 			throw new Exception("Left tree cannot be null (DeclarationList)");

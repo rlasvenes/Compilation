@@ -27,11 +27,25 @@ public class UnaryFunction extends AbstTree {
 			} else if (fct.equals(Functions.SIN.getName())) {
 				token = Functions.SIN.getName();
 				value = Math.sin(left.getValue());
+			} else if (fct.equals(Functions.COS.getName())) {
+				token = Functions.COS.getName();
+				value = Math.cos(left.getValue());
+			} else if (fct.equals(Functions.TAN.getName())) {
+				token = Functions.TAN.getName();
+				value = Math.tan(left.getValue());
+			} else if (fct.equals(Functions.ABS.getName())) {
+				token = Functions.ABS.getName();
+				value = Math.abs(left.getValue());
 			}
 
 			environment.putVariable(this.toString(), value);
 		} else {
 			throw new Exception("Cannot apply unary function to null tree");
 		}
+	}
+	
+	@Override
+	public String toString() {
+		return fct;
 	}
 }

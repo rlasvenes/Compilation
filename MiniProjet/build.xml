@@ -14,7 +14,7 @@
 		<echo message="Ant build file for Calculator example. Useful targets:" />
 		<echo message="" />
 		<echo message="clean: fait le ménage" />
-		<echo message="dist: construit le fichier dist/remi.lasvenes.a1.tar pour l'envoyer au prof de TD" />
+		<echo message="dist: construit le fichier dist/remi.lasvenes.1.tar pour l'envoyer au prof de TD" />
 		<echo message="all:  compile and exécute tout" />
 	</target>
 
@@ -57,7 +57,7 @@
 
 	<target name="dist">
 		<mkdir dir="dist" />
-		<tar destfile="dist/remi.lasvenes.a1.tar" basedir="." includes="README, src/**/*.java, scanner/*, parser/*, data/input, build.xml" />
+		<tar destfile="dist/remi.lasvenes.1.tar" basedir="." includes="README, src/**/*.java, scanner/*, parser/*, data/input, build.xml" />
 		</target>
 
 	</project>

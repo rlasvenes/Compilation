@@ -23,4 +23,8 @@ public class TypeIntegerExpr extends AbstTree {
 		}
 	}
 
+	public String toString() {
+		return id.toString();
+	}
+
 }

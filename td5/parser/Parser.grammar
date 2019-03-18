@@ -22,8 +22,9 @@
 
 %terminals IDENT, CONST_INT, CONST_STRING, TYPE_INT, TYPE_STRING, LIST, MAPSTO, LPAR, RPAR, LBRACKET, RBRACKET, PLUS, MINUS, COMMA, COLON, SEMICOLON;
 
-%typeof type = "Type";
+%typeof type_list, type = "Type";
 %typeof IDENT = "String";
+
 
 %goal expression_typee;
 
@@ -40,8 +41,8 @@ declaration= IDENT.id COLON type.t SEMICOLON {: env.addType(id, t);return new Sy
            ;
 
 type= type_simple
-    | LIST LPAR type RPAR
-    | LPAR type_list RPAR MAPSTO type
+    | LIST.l LPAR type.t RPAR {: return new ListType(l, t); :}v
+    | LPAR type_list.t1 RPAR MAPSTO type.t2 {: return new TypeFunction(t1, t2); :}
     ;
 
 type_simple= TYPE_INT {: return new SimpleType(SimpleType.Kinds.INT); :}
@@ -49,13 +50,13 @@ type_simple= TYPE_INT {: return new SimpleType(SimpleType.Kinds.INT); :}
            ;
 
 type_list=
-         | type
-         | type_list COMMA type
+         | type.t {: return new ListType(t); :}
+         | type_list.t1 COMMA type.t2 {: return new TypeTuple(t1, t2); :}
          ;
 
-expression= IDENT.id {: env.addType(id, env.getType(id)); return new Symbol(0); :}
-          | CONST_INT
-          | CONST_STRING
+expression= IDENT {: return env.getType(id); :}
+          | CONST_INT {: return new SimpleType(SimpleType.Kinds.INT); :}
+          | CONST_STRING {: return new SimpleType(SimpleType.Kinds.STRING); :}
           | expression PLUS expression
           | expression MINUS expression
           | LPAR expression RPAR
