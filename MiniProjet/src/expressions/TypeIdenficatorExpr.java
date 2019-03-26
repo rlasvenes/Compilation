@@ -10,7 +10,6 @@ public class TypeIdenficatorExpr extends AbstTree {
 	public TypeIdenficatorExpr(String id) {
 		super();
 		this.id = id;
-		token = id;
 	}
 
 	@Override
@@ -21,5 +20,10 @@ public class TypeIdenficatorExpr extends AbstTree {
 		} else {
 			throw new Exception("ID cannot be empty (TypeIdenficatorExpr)");
 		}
+	}
+
+	@Override
+	public String toString() {
+		return id;
 	}
 }

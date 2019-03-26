@@ -7,7 +7,6 @@ public class MultiplySymbol extends AbstTree {
 
 	public MultiplySymbol(AbstTree e1, AbstTree e2) {
 		super(e1, e2);
-		token = "*";
 	}
 
 	@Override

@@ -7,7 +7,6 @@ public class PlusSymbol extends AbstTree {
 
 	public PlusSymbol(AbstTree e1, AbstTree e2) {
 		super(e1, e2);
-		token = "+";
 	}
 
 	@Override

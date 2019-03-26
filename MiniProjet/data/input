@@ -1,1 +1,1 @@
-a = 8; x = -(2E-12 * 2 - (pow(2, a))); x
+x = -pow(sqrt(25),6); y = max(x,sin(pi/2))*(-4/2); z = round(max(x,y)); a = min(z,-5)/2 + -(2); a 

@@ -20,22 +20,18 @@ public class BinaryFunction extends AbstTree {
 			right.eval(environment);
 
 			if (fct.equals(Functions.MIN.getName())) {
-				token = Functions.MIN.getName();
 				value = Math.min(left.getValue(), right.getValue());
 			} else if (fct.equals(Functions.MAX.getName())) {
-				token = Functions.MAX.getName();
 				value = Math.max(left.getValue(), right.getValue());
 			} else if (fct.equals(Functions.POW.getName())) {
-				token = Functions.POW.getName();
 				value = Math.pow(left.getValue(), right.getValue());
 			}
-
 			environment.putVariable(this.toString(), value);
 		} else {
 			throw new Exception("Cannot apply binary function to null arguments");
 		}
 	}
-	
+
 	@Override
 	public String toString() {
 		return fct;
