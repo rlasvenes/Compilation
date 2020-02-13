@@ -18,7 +18,7 @@ node17 [label="4"];
 node2 -> node5;
 node5 [label="="];
 node5 -> node10;
-node10 [label="null"];
+node10 [label="-"];
 node10 -> node20;
 node20 [label="/"];
 node20 -> node40;

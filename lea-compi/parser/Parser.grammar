@@ -1,0 +1,598 @@
+%class "Parser";
+%package "ubordeaux.deptinfo.compilation.project.main";
+
+%import "ubordeaux.deptinfo.compilation.project.node.*";
+%import "ubordeaux.deptinfo.compilation.project.type.*";
+%import "ubordeaux.deptinfo.compilation.project.environment.*";
+%import "java.util.Iterator";
+%import "java.util.List";
+
+%embed {:
+
+	static class Events extends beaver.Parser.Events {
+		public void syntaxError(Symbol token) {
+			System.err.format("*** Erreur de syntaxe en ligne %d, colonne %d. Token inattendu: %s\n",
+				Symbol.getLine(token.getStart()),
+				Symbol.getColumn(token.getStart()),
+				Terminals.NAMES[token.getId()]);
+		}
+	}
+
+	public void semanticError(String msg, Symbol token) {
+			System.err.format("*** " + msg + " ligne %d, colonne %d\n",
+				Symbol.getLine(token.getStart()),
+				Symbol.getColumn(token.getStart()));
+		}
+
+Environment typeEnvironment = new Environment("types");
+Environment procedureEnvironment = new Environment("procedures");
+StackEnvironment stackEnvironment = new StackEnvironment("local variables stack");
+	private String type_declaration_name;
+
+	int to_pop=0;
+
+:};
+
+%init {:
+	report = new Events();
+:};
+
+// KEYWORDS
+%terminals TOKEN_TYPE, TOKEN_STRING, TOKEN_INTEGER, TOKEN_BOOLEAN, TOKEN_ARRAY, TOKEN_OF, TOKEN_STRUCT;
+%terminals TOKEN_VAR, TOKEN_PROCEDURE, TOKEN_FUNCTION, TOKEN_BEGIN, TOKEN_END, TOKEN_NEW, TOKEN_DISPOSE;
+%terminals TOKEN_PRINTLN, TOKEN_READLN, TOKEN_RETURN, TOKEN_IF, TOKEN_THEN, TOKEN_ELSE, TOKEN_WHILE, TOKEN_DO;
+%terminals TOKEN_SWITCH, TOKEN_CASE, TOKEN_DEFAULT;
+
+// PONCTS
+%terminals TOKEN_SEMIC, TOKEN_DOTDOT, TOKEN_COLON, TOKEN_COMMA;
+%terminals TOKEN_LPAR, TOKEN_RPAR, TOKEN_LBRACE, TOKEN_RBRACE;
+
+// OPERATORS
+%terminals TOKEN_AFF, TOKEN_CIRC;
+%terminals TOKEN_PLUS, TOKEN_MINUS, TOKEN_TIMES, TOKEN_DIV;
+%terminals TOKEN_AND, TOKEN_OR, TOKEN_NOT;
+%terminals TOKEN_LT, TOKEN_LE, TOKEN_GT, TOKEN_GE, TOKEN_EQ, TOKEN_NE;
+
+// LITERALS
+%terminals TOKEN_IDENTIFIER, TOKEN_LIT_INTEGER, TOKEN_LIT_STRING, TOKEN_TRUE, TOKEN_FALSE, TOKEN_NULL;
+
+// PRIORITY
+
+%left TOKEN_LPAR, TOKEN_LBRACE;
+%left TOKEN_TIMES, TOKEN_DIV;
+%left TOKEN_PLUS, TOKEN_MINUS;
+%left TOKEN_LT, TOKEN_LE, TOKEN_GT, TOKEN_GE;
+%left TOKEN_EQ, TOKEN_NE;
+%left TOKEN_AND;
+%left TOKEN_OR;
+%left TOKEN_COMMA;
+
+%right TOKEN_IF, TOKEN_THEN, TOKEN_ELSE;
+%right TOKEN_NOT, UNARY_MINUS, TOKEN_CIRC;
+%right TOKEN_AFF;
+
+%typeof TOKEN_LIT_STRING, TOKEN_INTEGER, TOKEN_IDENTIFIER, TOKEN_PRINTLN, TOKEN_READLN = "String";
+%typeof TOKEN_PLUS, TOKEN_MINUS, TOKEN_TIMES, TOKEN_DIV = "String";
+%typeof TOKEN_LIT_INTEGER = "Integer";
+
+
+%typeof expression = "NodeExp";
+%typeof identifier_list, variable_declaration_part = "IdentifierList";
+%typeof type, range_type = "Type";
+%typeof feature_type = "TypeFeature";
+%typeof argt_list, argt_part = "TypeTuple";
+%typeof procedure_definition_head = "TypeFunct";
+%typeof variable_access = "NodeExp";
+%typeof type_declaration_part, statement, statement_list, expression_list, case_statement_list, case_statement = "Node";
+%typeof block = "Node";
+%typeof expression_part = "NodeList";
+%typeof argt = "Type";
+
+%goal program;
+
+/***
+* Semantique A completer
+*
+* Quelques astuces:
+*
+* a) ne mettez jamais de lettres accentuees, Beaver ne fonctionnerait pas
+*
+* b) quand vous souhaitez mettre du code avant la fin de la regle,
+*     X= A {: je voudrais mettre du code ici :} B {: pour l'exploiter ici :}
+* utilisez une regle vide comme ceci:
+*
+*     X= A empty_X B {: pour l'exploiter ici  :} ;
+*     empty_X= {: je voudrais mettre du code ici :};
+*
+* c) pour implementer une liste, faites comme ceci:
+* xxx_list=
+*	xxx_list.list xxx.elt {: list.add(elt); return list; :}
+*	| xxx.elt {: MyList list = new MyList(); list.add(elt); return list; :}
+*	;
+*
+*
+***/
+
+
+program=
+	type_declaration_part
+	variable_declaration_part
+	procedure_definition_part
+	TOKEN_BEGIN
+	statement_list.list
+	TOKEN_END
+	{:
+		/* System.out.println("PROGRAM IS = ");
+		for(int i=0; i<list.size(); i++)
+			list.get(i).generateIntermediateCode(); */
+		return list;
+	:}
+	;
+
+type_declaration_part=
+	/* empty */
+	| TOKEN_TYPE type_declaration_list.list
+	;
+
+type_declaration_list=
+	type_declaration_list.list type_declaration.td
+	| type_declaration.td
+	;
+
+type_declaration=
+	type_declaration_head.id TOKEN_AFF type.t TOKEN_SEMIC //{: t.getConst_value() :}
+	;
+
+type_declaration_head=
+	TOKEN_IDENTIFIER.id //{: return new TypeNamed(id); :}
+	;
+
+type=
+	simple_type.type {: return type; :}
+	| named_type.name {: return name; :}
+	| index_type.index {: return index; :}
+	| array_type.array {: return array; :}
+	| pointer_type.pointer {: return pointer; :}
+	| structure_type.structure {:return structure; :}
+	;
+
+simple_type=
+	TOKEN_STRING {: return new TypeString(); :}
+	| TOKEN_INTEGER {: return new TypeInt(); :}
+	| TOKEN_BOOLEAN {: return new TypeBoolean(); :}
+	;
+
+named_type=
+	TOKEN_IDENTIFIER.id   {: return new TypeNamed(id); :}
+	;
+
+index_type=
+	enumerated_type.type {: return type; :}
+	| subrange_type.t {: return t; :}
+	;
+
+enumerated_type=
+	TOKEN_LPAR identifier_list.list TOKEN_RPAR
+		{:
+			String first = list.first();
+			String last = list.last();
+
+			Iterator<String> it = list.iterator();
+			int taille = 0;
+			while (it.hasNext()) {
+				taille++;
+				String str = it.next();
+				typeEnvironment.putType(str, new TypeInt());
+				// put dans l'environnement str, de type new TypeInt()
+			}
+
+			// TypeItemEnum(int value, String refEnumRange)
+			TypeItemEnum minItem = new TypeItemEnum(0, first);
+			TypeItemEnum maxItem = new TypeItemEnum(taille, last);
+			TypeEnumRange ter = new TypeEnumRange(minItem, maxItem);
+
+			return ter;
+		:}
+	;
+
+
+subrange_type=
+    TOKEN_LIT_INTEGER.lit1 TOKEN_DOTDOT TOKEN_LIT_INTEGER.lit2
+		{:
+			// min = lit1 et max = lit2
+			TypeArrayRange range = new TypeArrayRange(new TypeInt(lit1), new TypeInt(lit2));
+			TypeArray arrayType = new TypeArray(range, new TypeInt());
+
+			return range;
+		:}
+    | TOKEN_IDENTIFIER.id1 TOKEN_DOTDOT TOKEN_IDENTIFIER.id2
+		{:
+			TypeArrayRange range = new TypeArrayRange(typeEnvironment.getType(id1), typeEnvironment.getType(id2));
+			TypeArray arrayType = new TypeArray(range, typeEnvironment.getType(id1));
+
+			return range;
+		:}
+    ;
+
+array_type=
+    TOKEN_ARRAY TOKEN_LBRACE range_type.range TOKEN_RBRACE TOKEN_OF type.type {: return new TypeArray(range, type); :}
+    ;
+
+range_type=
+    enumerated_type.e 			{: return e; :}
+    | subrange_type.subrange 	{: return subrange; :}
+    | named_type.name 			{: return name; :}
+    ;
+
+pointer_type=
+	TOKEN_CIRC type.type {: return new TypePointer(type); :}
+	;
+
+structure_type=
+	TOKEN_STRUCT TOKEN_LBRACE feature_list_type.t TOKEN_RBRACE //{: return new TypeStruct(t); :}
+	;
+
+feature_list_type=
+	feature_list_type.list feature_type.type // {: list.add(type); return list;:}
+	| feature_type.type {: TypeFeatureList list = new TypeFeatureList(type); return list; :}
+	;
+
+feature_type=
+	TOKEN_IDENTIFIER.id TOKEN_COLON type.t TOKEN_SEMIC {: return new TypeFeature(id, t); :}
+	;
+
+
+variable_declaration_part=
+	/* empty */
+	| TOKEN_VAR variable_declaration_list.l //{: System.out.println(l); return new Symbol(0);:}
+	;
+
+// Remi
+
+variable_declaration_list=
+	variable_declaration_list.list variable_declaration.d
+	| variable_declaration.d {: return d; :}
+	;
+
+variable_declaration=
+	identifier_list.list TOKEN_COLON type.t TOKEN_SEMIC
+		{:
+			Iterator<String> it = list.iterator();
+			while (it.hasNext()) {
+				String str = it.next();
+				typeEnvironment.putType(str, t);
+			}
+			return list;
+		:}
+	;
+
+identifier_list=
+	identifier_list.l TOKEN_COMMA TOKEN_IDENTIFIER.id {: l.add(id); return l; :}
+	| TOKEN_IDENTIFIER.id {: return new IdentifierList(id); :}
+	;
+
+procedure_definition_part=
+	| procedure_definition_list.list //{: return list; :}
+	;
+
+procedure_definition_list=
+	procedure_definition_list.list procedure_definition.proc
+		/* {:
+			list.add(proc);
+			return list;
+		:} */
+	| procedure_definition.proc
+		/* {:
+			if (proc.getDefined()) {
+				System.err.println("Redefinition de : " + proc.getName());
+			}
+
+		:} */
+	;
+
+procedure_definition=
+	procedure_definition_head.h block.b
+		/* {:
+			TypeFunct fct = h;
+			NodeList list = new NodeList(b);
+		:} */
+	| procedure_declaration_head.h TOKEN_SEMIC
+	;
+
+procedure_definition_head=
+	procedure_head.h {: return h;:}
+	;
+
+procedure_declaration_head=
+	procedure_head.h {: return h; :}
+	;
+
+procedure_head=
+	TOKEN_PROCEDURE TOKEN_IDENTIFIER.id TOKEN_LPAR argt_part.args TOKEN_RPAR
+		{:
+			// procedure = fonction de type void
+			TypeTuple tuple = new TypeTuple();
+
+			Iterator<Type> it = args.iterator();
+			while (it.hasNext()) {
+				tuple.add(it.next());
+			}
+
+
+			TypeFunct fct = (TypeFunct) procedureEnvironment.getProc(id);
+
+			// si non defini
+			if (fct == null) {
+				fct = new TypeFunct(id, tuple, new TypeVoid());
+				// alors maintenant defini
+				fct.setDefined(true);
+				procedureEnvironment.putProc(id, fct);
+			}
+			return procedureEnvironment.getProc(id);
+		:}
+	| TOKEN_FUNCTION TOKEN_IDENTIFIER.id TOKEN_LPAR argt_part.args TOKEN_RPAR TOKEN_COLON type.ret
+		{:
+			// fonction = fonction avec type different de void
+			TypeTuple tuple = new TypeTuple();
+
+			Iterator<Type> it = args.iterator();
+			while (it.hasNext()) {
+				tuple.add(it.next());
+			}
+
+
+			TypeFunct fct = (TypeFunct) procedureEnvironment.getProc(id);
+
+			// si non defini
+			if (fct == null) {
+				fct = new TypeFunct(id, tuple, ret);
+				// alors maintenant defini
+				fct.setDefined(true);
+				procedureEnvironment.putProc(id, fct);
+			}
+			return procedureEnvironment.getProc(id);
+		:}
+	;
+
+argt_part=
+	/* empty */
+	| argt_list.l {: return l; :}
+	;
+
+argt_list=
+	argt_list.list TOKEN_COMMA argt.arg
+		{:
+			list.add(arg);
+			return list;
+		:}
+	| argt.arg
+		{:
+			TypeTuple tuple = new TypeTuple();
+			tuple.add(arg);
+			return tuple;
+		:}
+	;
+
+argt=
+	TOKEN_IDENTIFIER.id TOKEN_COLON type.t {: return new TypeFeature(id, t); :}
+	;
+
+block=
+	variable_declaration_part.l
+	TOKEN_BEGIN
+	statement_list.list
+	TOKEN_END empty_rule
+	{:
+		if (l != null) {
+        	Iterator<String> it = l.iterator();
+
+        	while(it.hasNext()) {
+        		String s = it.next();
+        		stackEnvironment.push(s);
+        		to_pop += 1;
+            	//System.out.println(s);
+        	}
+
+        }
+		return list;
+	:}
+	;
+
+empty_rule =
+	{:
+		while( to_pop != 0){
+			stackEnvironment.pop();
+			to_pop -= 1;
+		}
+		return new Symbol(0);
+	:}
+	;
+
+
+statement_list=
+	statement_list.list statement.s {: list.add(s); return list;:}
+	| statement.s {: return new NodeList(s); :}
+	;
+
+statement=
+	simple_statement.stm {: return stm; :}
+	| structured_statement.stm {: return stm; :}
+	;
+
+simple_statement=
+	assignment_statement.stm {: return stm;:}
+	| procedure_statement.stm {: return stm; :}
+	| new_statement.stm {: return stm; :}
+	| dispose_statement.stm {: return stm; :}
+	| println_statement.stm {: return stm; :}
+	| readln_statement.stm {: return stm; :}
+	| return_statement.stm {: return stm; :}
+	;
+
+assignment_statement=
+	variable_access.e1 TOKEN_AFF expression.e2 TOKEN_SEMIC
+		{:
+			if (!e2.getType().equals(e1.getType())) {
+				System.err.printf("Cannot assign \"%s\" to \"%s\"\n", e1.getType(), e2.getType());
+				if (e1.getType() instanceof TypePointer && e2.getType() instanceof TypePointer) {
+					// probleme a gerer si on fait TypePointer(TypeQuelconque) = TypePointer
+				}
+			}
+
+			NodeAssign na = new NodeAssign(e1, e2);
+			return na;
+		:}
+	;
+
+procedure_statement=
+	procedure_expression.pe TOKEN_SEMIC {: return pe; :}
+	;
+
+
+
+procedure_expression=
+	TOKEN_IDENTIFIER.id TOKEN_LPAR expression_part.e TOKEN_RPAR
+		{:
+			// NodeCallFct(String name, TypeFunct type, NodeList args)
+			TypeFunct fct = (TypeFunct) procedureEnvironment.getProc(id);
+
+			if (fct == null) {
+				return new Symbol(0);
+			}
+
+			NodeCallFct callFct = new NodeCallFct(id, fct, e);
+			return callFct;
+
+		:}
+	;
+
+expression_part=
+	/* empty */
+	| expression_list.le {: return le; :}
+	;
+
+expression_list=
+	expression_list.le TOKEN_COMMA expression.e {: le.add(e); return le;:}
+	| expression.e
+		{:
+			NodeList le = new NodeList();
+			le.add(e);
+			return le;
+		:}
+	;
+
+new_statement=
+	TOKEN_NEW variable_access.var TOKEN_SEMIC {: return new NodeNew(var); :}
+	;
+
+dispose_statement=
+	TOKEN_DISPOSE variable_access.var TOKEN_SEMIC {: return new NodeDispose(var); :}
+	;
+
+println_statement=
+	TOKEN_PRINTLN.str expression.e TOKEN_SEMIC
+		{:
+			TypeTuple tuple = new TypeTuple(new TypeFeature(str, e.getType()));
+			TypeFunct tfct = new TypeFunct(str, tuple, new TypeString());
+			return new NodeCallFct(str, tfct, new NodeList(e));
+		:}
+	;
+
+readln_statement=
+	TOKEN_READLN.str expression.e TOKEN_SEMIC
+		{:
+			TypeTuple tuple = new TypeTuple(new TypeFeature(str, e.getType()));
+			TypeFunct tfct = new TypeFunct(str, tuple, new TypeString());
+			return new NodeCallFct(str, tfct, new NodeList(e));
+		:}
+	;
+
+return_statement=
+	TOKEN_RETURN expression.e TOKEN_SEMIC {: return new NodeReturn(e); :}
+	;
+
+structured_statement=
+	block.b {: return b; :}
+	| if_statement.stm {: return stm; :}
+	| while_statement.stm {: return stm; :}
+	| switch_statement.stm {: return stm; :}
+	;
+
+if_statement=
+	TOKEN_IF expression.e TOKEN_THEN statement.s {: return new NodeIf(e, s);:}
+	| TOKEN_IF expression.e TOKEN_THEN statement.s1 TOKEN_ELSE statement.s2 {:return new NodeIf(e, s1, s2);:}
+	;
+
+while_statement=
+	TOKEN_WHILE expression.e TOKEN_DO statement.s
+		{:
+			NodeWhile nw = new NodeWhile(e, s);
+			return nw;
+		:}
+	;
+
+switch_statement=
+	TOKEN_SWITCH expression.e TOKEN_BEGIN case_statement_list.stm TOKEN_END
+		{:
+			NodeSwitch ns = new NodeSwitch(e, stm);
+			return ns;
+		:}
+	;
+
+case_statement_list=
+	case_statement_list.stm case_statement.s {: stm.add(s); return stm; :}
+	| case_statement.s
+		{:
+			NodeCaseList stm = new NodeCaseList();
+			stm.add(s);
+			return stm;
+		:}
+	;
+
+case_statement=
+	TOKEN_CASE TOKEN_IDENTIFIER.id TOKEN_COLON statement.s {: return new NodeCase(id, s); :}
+	| TOKEN_DEFAULT TOKEN_COLON statement.s {: return new NodeCase(s); :}
+	;
+
+variable_access=
+	TOKEN_IDENTIFIER.id
+		{:
+			Type t = typeEnvironment.getType(id);
+			return new NodeId(id, t);
+		:}
+	| variable_access.var TOKEN_LBRACE expression.e TOKEN_RBRACE
+		{:
+			Node arrAccess = new NodeArrayAccess(var, e);
+			return arrAccess;
+		:}
+	| expression.e TOKEN_CIRC {: return new NodePtrAccess(e);:}
+	;
+
+expression=
+	expression.e1 TOKEN_PLUS.op expression.e2   		{: return new NodeOp(op, e1, e2); :}
+	| expression.e1 TOKEN_MINUS.op expression.e2		{: return new NodeOp(op, e1, e2); :}
+	| expression.e1 TOKEN_TIMES.op expression.e2		{: return new NodeOp(op, e1, e2); :}
+	| expression.e1 TOKEN_DIV.op expression.e2			{: return new NodeOp(op, e1, e2); :}
+	| TOKEN_MINUS expression.e @ UNARY_MINUS			{: return new NodeOp("-", e); :}
+	| expression.e1 TOKEN_OR expression.e2				{: return new NodeOp("||", e1, e2); :}
+	| expression.e1 TOKEN_AND expression.e2      		{: return new NodeOp("&&", e1, e2); :}
+	| TOKEN_NOT expression.e                 			{: return new NodeOp("!", e); :}
+	| expression.e1 TOKEN_LT expression.e2				{: return new NodeRel("<", e1, e2); :}
+	| expression.e1 TOKEN_LE expression.e2				{: return new NodeRel("<=", e1, e2); :}
+	| expression.e1 TOKEN_GT expression.e2				{: return new NodeRel(">", e1, e2); :}
+	| expression.e1 TOKEN_GE expression.e2				{: return new NodeRel(">=", e1, e2); :}
+	| expression.e1 TOKEN_EQ expression.e2				{: return new NodeRel("==", e1, e2); :}
+	| expression.e1 TOKEN_NE expression.e2				{: return new NodeRel("!=", e1, e2); :}
+	| TOKEN_LPAR expression.e TOKEN_RPAR 				{: return e; :}
+	| procedure_expression.pe							{: return pe; :}
+	| variable_access.v 								{: return v; :}
+	| literal.l  										{: return l; :}
+	;
+
+literal=
+	TOKEN_LIT_INTEGER.n {: return new NodeLiteral(new TypeInt(n), n); :}
+	| TOKEN_LIT_STRING.s {:return new NodeLiteral(new TypeString(),s);:}
+	| TOKEN_TRUE	{: return new NodeLiteral(new TypeBoolean(), true); :}
+	| TOKEN_FALSE	{: return new NodeLiteral(new TypeBoolean(), false); :}
+	| TOKEN_NULL {: return new NodeLiteral(new TypePointer(), null); :}
+	;

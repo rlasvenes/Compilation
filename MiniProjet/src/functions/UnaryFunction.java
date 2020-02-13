@@ -34,4 +34,9 @@ public class UnaryFunction extends AbstTree {
 			throw new Exception("Cannot apply unary function to null tree");
 		}
 	}
+
+	@Override
+	public String toString() {
+		return fct + "(" + value + ")";
+	}
 }

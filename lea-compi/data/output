@@ -1,0 +1,25 @@
+*** Fichier data/progr5.lea
+varx:integer
+;functionsum(i:integer
+,j:integer
+):integer
+vark:integer
+;begin
+return(i+j);end
+function
+Enregistre la variable locale: k dans la pile
+sum(i:integer
+,j:integer
+):integer
+vark:integer
+;begin
+return(i+j);end
+function
+Variable locale dépilé
+
+Enregistre la variable locale: k dans la pile
+pgcd(i:integer
+,j:integer
+):integer
+begin
+while(i!=j)doif(i>j)then
