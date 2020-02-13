@@ -7,7 +7,6 @@ public class DivisionSymbol extends AbstTree {
 
 	public DivisionSymbol(AbstTree e1, AbstTree e2) {
 		super(e1, e2);
-		token = "/";
 	}
 
 	@Override

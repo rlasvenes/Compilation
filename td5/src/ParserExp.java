@@ -9,30 +9,18 @@ import java.util.ArrayList;
 public class ParserExp extends Parser {
 
 	static final ParsingTables PARSING_TABLES = new ParsingTables(
-		"U9obaqbF0a4GXTym80oh0oYWehA82$5Wuicu9IO6DIPUZ1Tl7lmR$bpt3VUjVDMqSPnuqY7" +
-		"VgzVLNJqztGs0G$IZZ0AooD5b$kf4a40D4MfCZb552vE8eWzvepKC8axrR4zFQqYRgiIFh8" +
-		"vNPZ025qdug2E54cT8OHX5L3208VQDaGOcg5EOfevY74quN8FB#jY$7EWTliVXsyjSIvnhJ" +
-		"FBzdb7D#jIYxUcfOtBw2sPrl9BdFlciz$abQNwBJyroXWptKFiKpsZQgCDMZkje7r4KuSFG" +
-		"855jy$5ip99rwmja#Ql6vigaPNsLR5Y$QkCMQP9EeEQ0p95zsvudksIFB8RcNmcrVR9aVSd" +
-		"6XetrmBZPO5ruBZvhuNwRx$oIsmpuXO3V3etR2VWsT$MZP#MQNCaPzPoSI5TkvSRqN9hiXP" +
-		"pAktHDvarURTMBF5ZtB4$oo7Wdz$hLtFC8xmz8XASTvPawvh#Gv#tIqrLAPgH6rzoTRzmGK" +
-		"TuK4BrpBYgVC4rb2G==");
+		"U9obaajF544KXK$RCyoJURz0S8GHSHGILhEO3GPCq1YC2J70WfqR$WN$5byWC88WwENheYO" +
+		"s4zXeLRuwfsxLxRxTLP9sLL5HawghuDpulpapfVK0ahQlh1BAGKTZga57RQNqJ5squxJbOf" +
+		"bRiJIzhRpp2Vg27f4xfb1FL28ZfmarL5PJKwpCm9ogUgvvt0jugCUQrgoUAg2Ia2Sa$yi9N" +
+		"uSoxyvIVnu2giX2G5rbwisWWTEoYzLknOBOlXIzGhqvUlGDASOytrFZVIMt4f5rqU5idFm2" +
+		"iIArBEunH1WDwK0YcjCoNWlGzhuAgyCSsbluu7qBvhoVXjVUl$Aw2Gkm5Sl$24kmu#Szs81" +
+		"jw0$t#RMN8$CIB7lVy3hhjHlRruldZJnZFUPNxjcpTaViJSptO$xToBxtCR$8N$vpO#qx7D" +
+		"eNng$moGPsOiUu8xTwu5Q#sMVxRGCNkR9Bd$dBphoxi7FxYVwmKqL$lyMPrt5rjC5Tgt3E5" +
+		"QT9pYrmD5blEWtTtVfBU0S9xf4WW50JrnNmQMu=");
 
 	static final Action RETURN2 = new Action() {
 		public Symbol reduce(Symbol[] _symbols, int offset) {
 			return _symbols[offset + 2];
-		}
-	};
-
-	static final Action RETURN4 = new Action() {
-		public Symbol reduce(Symbol[] _symbols, int offset) {
-			return _symbols[offset + 4];
-		}
-	};
-
-	static final Action RETURN5 = new Action() {
-		public Symbol reduce(Symbol[] _symbols, int offset) {
-			return _symbols[offset + 5];
 		}
 	};
 
@@ -73,8 +61,22 @@ public class ParserExp extends Parser {
 				}
 			},
 			Action.RETURN,	// [4] type = type_simple
-			RETURN4,	// [5] type = LIST LPAR type RPAR; returns 'RPAR' although none is marked
-			RETURN5,	// [6] type = LPAR type_list RPAR MAPSTO type; returns 'type' although none is marked
+			new Action() {	// [5] type = LIST.l LPAR type.t RPAR
+				public Symbol reduce(Symbol[] _symbols, int offset) {
+					final Symbol l = _symbols[offset + 1];
+					final Symbol _symbol_t = _symbols[offset + 3];
+					final Type t = (Type) _symbol_t.value;
+					 return new ListType(l, t);
+				}
+			},
+			new Action() {	// [6] type = LPAR type_list.l RPAR MAPSTO type.t
+				public Symbol reduce(Symbol[] _symbols, int offset) {
+					final Symbol l = _symbols[offset + 2];
+					final Symbol _symbol_t = _symbols[offset + 5];
+					final Type t = (Type) _symbol_t.value;
+					 return new TypeFunction(l, t);
+				}
+			},
 			new Action() {	// [7] type_simple = TYPE_INT
 				public Symbol reduce(Symbol[] _symbols, int offset) {
 					 return new SimpleType(SimpleType.Kinds.INT);
@@ -86,25 +88,73 @@ public class ParserExp extends Parser {
 				}
 			},
 			Action.NONE,  	// [9] type_list = 
-			Action.RETURN,	// [10] type_list = type
-			RETURN3,	// [11] type_list = type_list COMMA type; returns 'type' although none is marked
-			new Action() {	// [12] expression = IDENT.id
+			new Action() {	// [10] type_list = type.t
 				public Symbol reduce(Symbol[] _symbols, int offset) {
-					final Symbol _symbol_id = _symbols[offset + 1];
-					final String id = (String) _symbol_id.value;
-					 env.addType(id, env.getType(id)); return new Symbol(0);
+					final Symbol _symbol_t = _symbols[offset + 1];
+					final Type t = (Type) _symbol_t.value;
+					 return new ListType(t);
 				}
 			},
-			Action.RETURN,	// [13] expression = CONST_INT
-			Action.RETURN,	// [14] expression = CONST_STRING
-			RETURN3,	// [15] expression = expression PLUS expression; returns 'expression' although none is marked
-			RETURN3,	// [16] expression = expression MINUS expression; returns 'expression' although none is marked
-			RETURN3,	// [17] expression = LPAR expression RPAR; returns 'RPAR' although none is marked
-			RETURN3,	// [18] expression = LBRACKET expression_list RBRACKET; returns 'RBRACKET' although none is marked
-			RETURN4,	// [19] expression = expression LPAR expression_list RPAR; returns 'RPAR' although none is marked
-			Action.NONE,  	// [20] expression_list = 
-			Action.RETURN,	// [21] expression_list = expression
-			RETURN3	// [22] expression_list = expression_list COMMA expression; returns 'expression' although none is marked
+			new Action() {	// [11] type_list = type_list.l COMMA type.t
+				public Symbol reduce(Symbol[] _symbols, int offset) {
+					final Symbol l = _symbols[offset + 1];
+					final Symbol _symbol_t = _symbols[offset + 3];
+					final Type t = (Type) _symbol_t.value;
+					 return new ListType(l, t);
+				}
+			},
+			Action.RETURN,	// [12] expression = IDENT
+			new Action() {	// [13] expression = CONST_INT
+				public Symbol reduce(Symbol[] _symbols, int offset) {
+					 return new SimpleType(SimpleType.Kinds.INT);
+				}
+			},
+			new Action() {	// [14] expression = CONST_STRING
+				public Symbol reduce(Symbol[] _symbols, int offset) {
+					 return new SimpleType(SimpleType.Kinds.INT);
+				}
+			},
+			new Action() {	// [15] expression = CONST_STRING PLUS CONST_STRING
+				public Symbol reduce(Symbol[] _symbols, int offset) {
+					 return new SimpleType(SimpleType.Kinds.STRING);
+				}
+			},
+			new Action() {	// [16] expression = expression.e1 PLUS expression.e2
+				public Symbol reduce(Symbol[] _symbols, int offset) {
+					final Symbol e1 = _symbols[offset + 1];
+					final Symbol e2 = _symbols[offset + 3];
+					 return new Add(e1, e2);
+				}
+			},
+			new Action() {	// [17] expression = expression.e1 MINUS expression.e2
+				public Symbol reduce(Symbol[] _symbols, int offset) {
+					final Symbol e1 = _symbols[offset + 1];
+					final Symbol e2 = _symbols[offset + 3];
+					 return new Minus(e1, e2);
+				}
+			},
+			new Action() {	// [18] expression = LPAR expression.e RPAR
+				public Symbol reduce(Symbol[] _symbols, int offset) {
+					final Symbol e = _symbols[offset + 2];
+					 return e;
+				}
+			},
+			new Action() {	// [19] expression = LBRACKET expression_list.l RBRACKET
+				public Symbol reduce(Symbol[] _symbols, int offset) {
+					final Symbol l = _symbols[offset + 2];
+					 return new ListExpr(l);
+				}
+			},
+			new Action() {	// [20] expression = expression.e LPAR expression_list.l RPAR
+				public Symbol reduce(Symbol[] _symbols, int offset) {
+					final Symbol e = _symbols[offset + 1];
+					final Symbol l = _symbols[offset + 3];
+					 return new ListExpr(e, l);
+				}
+			},
+			Action.NONE,  	// [21] expression_list = 
+			Action.RETURN,	// [22] expression_list = expression
+			RETURN3	// [23] expression_list = expression_list COMMA expression; returns 'expression' although none is marked
 		};
 
 

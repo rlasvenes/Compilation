@@ -2,6 +2,7 @@ package declarations;
 
 import abstractTree.AbstTree;
 import abstractTree.EnvironmentInt;
+import expressions.TypeIdenficatorExpr;
 
 public class Affectation extends AbstTree {
 
@@ -10,11 +11,6 @@ public class Affectation extends AbstTree {
 	public Affectation(AbstTree e1, String id) {
 		super(e1);
 		this.id = id;
-		token = "=";
-	}
-
-	public Affectation(AbstTree e) {
-		super(e);
 	}
 
 	@Override
@@ -26,7 +22,7 @@ public class Affectation extends AbstTree {
 				value = left.getValue();
 				environment.putVariable(id, value);
 			} else {
-				// TODO
+
 			}
 		} else {
 			throw new Exception("Left tree cannot be null at line: " + getStart());

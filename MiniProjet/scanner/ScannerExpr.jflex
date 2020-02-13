@@ -18,9 +18,9 @@ import beaver.Scanner;
 Identifier = [a-zA-Z_][a-zA-Z0-9_]*
 Integer = [0-9]+
 Decimal = ({Integer}(\.{Integer})?)|(\.{Integer})
-Float = [+-]?{Decimal}([eE][+-]?{Integer})?
+Float = {Decimal}([eE][+-]?{Integer})?
 UFunction = sin|tan|cos|abs|sqrt|round
-BFunction = min|max
+BFunction = min|max|pow
 
 %%
 

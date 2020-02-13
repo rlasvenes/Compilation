@@ -17,8 +17,6 @@ static public class MyEvents extends beaver.Parser.Events {
 	}
 };
 
-EnvironmentInt env = new Environment();
-
 :} ;
 
 %init {:

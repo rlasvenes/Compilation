@@ -10,8 +10,6 @@ import java.io.File;
 public class Main {
 
     public static void main(String[] args) throws Exception {
-        System.out.println("Working Directory : " + System.getProperty("user.dir"));
-
         ScannerExpr input = new ScannerExpr(new FileReader(args[0]));
         ParserExpr parser = new ParserExpr();
 
@@ -27,8 +25,6 @@ public class Main {
             EnvironmentInt environment = new Environment();
             expr.eval(environment);
             System.out.println("Résultat: " + expr.getValue());
-            
-            expr.printAST();
         } catch (Exception e) {
             System.out.println("EXCEPTION ATTRAPÉE ! ");
             e.printStackTrace();

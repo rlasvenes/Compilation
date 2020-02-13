@@ -8,6 +8,4 @@ public interface AbstTreeInt {
 	// Cette fonction renvoie une valeur associée au noeud de l'arbre
 	Double getValue();
 
-	void printAST();
-
 }

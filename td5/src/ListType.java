@@ -1,7 +1,7 @@
 
 public class ListType extends ComplexType {
-    public ListType() {
-    	 
+    public ListType(ComplexType ctype, Type type) {
+        super();
     }
 
 	@Override

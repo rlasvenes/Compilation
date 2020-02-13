@@ -11,7 +11,6 @@ public class DeclarationList extends AbstTree {
 
 	public DeclarationList(AbstTree e1, AbstTree e2) {
 		super(e1, e2);
-		token = "SEQ";
 	}
 
 	@Override
